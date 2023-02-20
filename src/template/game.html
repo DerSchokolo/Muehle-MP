@@ -18,8 +18,6 @@
 </body>
 <script> 
     let whitemove = true;
-    let whitedrop = "";
-    let blackdrop = "";
 
     // Create game grid
     for (i=1; i<24; i++) {
@@ -39,6 +37,7 @@
 
                 if (whitemove) {
                     whitemove = false;
+                    console.log(ereignis);
                     return Drop, whitemove;
                 };
 
