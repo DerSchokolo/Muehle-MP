@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/src/static/style.css">
+    <script type="text/javascript" src="/src/static/functions.js"></script>
+</head>
+<body>
+    <h1 id="phase">Setzphase</h1>
+    <div class="gameframealign">
+        <div id="tablewhite" class="tablewhite"></div>
+        <div id="gameframe" class="gameframe"></div>
+        <div id="tableblack" class="tableblack"></div>
+    </div>
+</body>
+<script> 
+    let whitemove = true;
+
+    // Create game grid
+    for (i=1; i<25; i++) {
+        let newDiv = document.createElement("Div");
+        newDiv.id = (i-1);
+        newDiv.classList.add("field" + i);
+        newDiv.addEventListener("click", detectinput);
+        newDiv.innerHTML = i-1;
+        newDiv.addEventListener("dragover", function (ereignis) {
+            ereignis.preventDefault();
+            ereignis.dataTransfer.dropEffect = "move";
+        });
+        newDiv.addEventListener("drop", function (ereignis) {
+            ereignis.preventDefault;
+
+            // checks for right color and if field is empty
+            if (Drop==true && boardarray[newDiv.id].color=='empty') {
+                ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
+
+                // whites turn
+                if (whitemove == true) {
+                    boardarray[newDiv.id].color = 'white';
+                    whitemove = false;
+                    gamephase();
+                    return Drop, whitemove;
+                };
+
+                // blacks turn
+                if (whitemove == false) {
+                    boardarray[newDiv.id].color = 'black';
+                    whitemove = true;
+                    gamephase();
+                    return Drop, whitemove;
+                };
+            };
+        });
+        document.getElementById('gameframe').appendChild(newDiv);
+    };
+
+    // Create white stones
+    for (i=0; i<9; i++) {
+        let newDiv = document.createElement("Div");
+        newDiv.id = "whitestone" + i;
+        newDiv.classList.add("whitestone" + (i+1));
+        newDiv.innerHTML = "white";
+        newDiv.draggable = "true";
+        newDiv.addEventListener("dragstart", function (ereignis) {
+            if (whitemove == true) {
+                Drop = true;
+                ereignis.dataTransfer.setData("text/plain", ereignis.target.id);
+                return Drop;
+            }
+
+            else {
+                Drop = false;
+                return Drop;
+            };
+        });
+        document.getElementById('tablewhite').appendChild(newDiv);
+    };
+
+    // Create black stones
+    for (i=0; i<9; i++) {
+        let newDiv = document.createElement("Div");
+        newDiv.id = "blackstone" + i;
+        newDiv.classList.add("blackstone" + (i+1));
+        newDiv.innerHTML = "black";
+        newDiv.draggable = "true";
+        newDiv.addEventListener("dragstart", function (ereignis) {
+            if (whitemove == false) {
+                Drop = true;
+                ereignis.dataTransfer.setData("text/plain", ereignis.target.id);
+                return Drop;
+            }
+
+            else {
+                Drop = false;
+                return Drop;
+            };
+        });
+
+        document.getElementById('tableblack').appendChild(newDiv);
+    };
+
+</script>
+</html>
