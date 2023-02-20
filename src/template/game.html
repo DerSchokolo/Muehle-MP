@@ -11,26 +11,90 @@
 </head>
 <body>
     <div class="gameframealign">
-        <div id="gameframe" class="gameframe">
-        </div>
+        <div id="tablewhite" class="tablewhite"></div>
+        <div id="gameframe" class="gameframe"></div>
+        <div id="tableblack" class="tableblack"></div>
     </div>
 </body>
 <script> 
-    function detectinput(field) {
-    console.log('input detectet field: ' + this.id);
-    };
+    let whitemove = true;
+    let whitedrop = "";
+    let blackdrop = "";
 
-    const gameframe = document.getElementById("gameframe");
-
-    for (i=0; i<25; i++) {
+    // Create game grid
+    for (i=1; i<24; i++) {
         let newDiv = document.createElement("Div");
-        newDiv.id = "field" + i;
+        newDiv.id = "field" + (i-1);
         newDiv.classList.add("field" + i);
         newDiv.addEventListener("click", detectinput);
+        newDiv.addEventListener("dragover", function (ereignis) {
+            ereignis.preventDefault();
+            ereignis.dataTransfer.dropEffect = "move";
+        });
+        newDiv.addEventListener("drop", function (ereignis) {
+            ereignis.preventDefault;
 
-        gameframe.appendChild(newDiv);
+            if (Drop==true) {
+                ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
+
+                if (whitemove) {
+                    whitemove = false;
+                    return Drop, whitemove;
+                };
+
+                if (whitemove == false) {
+                    whitemove = true;
+                    return Drop, whitemove;
+                };
+            };
+        });
+        document.getElementById('gameframe').appendChild(newDiv);
+    };
+
+    // Create white stones
+    for (i=0; i<9; i++) {
+        let newDiv = document.createElement("Div");
+        newDiv.id = "whitestone" + i;
+        newDiv.classList.add("whitestone" + (i+1));
+        newDiv.innerHTML = "white";
+        newDiv.draggable = "true";
+        newDiv.addEventListener("dragstart", function (ereignis) {
+            if (whitemove == true) {
+                Drop = true;
+                ereignis.dataTransfer.setData("text/plain", ereignis.target.id);
+                return Drop;
+            }
+
+            else {
+                Drop = false;
+                return Drop;
+            };
+        });
+        document.getElementById('tablewhite').appendChild(newDiv);
+    };
+
+    // Create black stones
+    for (i=0; i<9; i++) {
+        let newDiv = document.createElement("Div");
+        newDiv.id = "blackstone" + i;
+        newDiv.classList.add("blackstone" + (i+1));
+        newDiv.innerHTML = "black";
+        newDiv.draggable = "true";
+        newDiv.addEventListener("dragstart", function (ereignis) {
+            if (whitemove == false) {
+                Drop = true;
+                ereignis.dataTransfer.setData("text/plain", ereignis.target.id);
+                return Drop;
+            }
+
+            else {
+                Drop = false;
+                return Drop;
+            };
+        });
+
+        document.getElementById('tableblack').appendChild(newDiv);
     };
 
 </script>
-
 </html>
