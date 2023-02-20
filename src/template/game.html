@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/src/static/style.css">
+    <script type="text/javascript" src="/src/static/functions.js"></script>
+</head>
+<body>
+    <div class="gameframealign">
+        <div id="gameframe" class="gameframe">
+        </div>
+    </div>
+</body>
+<script> 
+    function detectinput(field) {
+    console.log('input detectet field: ' + this.id);
+    };
+
+    const gameframe = document.getElementById("gameframe");
+
+    for (i=0; i<25; i++) {
+        let newDiv = document.createElement("Div");
+        newDiv.id = "field" + i;
+        newDiv.classList.add("field" + i);
+        newDiv.addEventListener("click", detectinput);
+
+        gameframe.appendChild(newDiv);
+    };
+
+</script>
+
+</html>
