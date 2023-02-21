@@ -42,7 +42,7 @@
 
 .whitestone9 { grid-area: whitestone9; }
 
-.tableblackck {
+.tableblack {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -50,34 +50,34 @@
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    "blackckstone1"
-    "blackckstone2"
-    "blackckstone3"
-    "blackckstone4"
-    "blackckstone5"
-    "blackckstone6"
-    "blackckstone7"
-    "blackckstone8"
-    "blackckstone9";
+    "blackstone1"
+    "blackstone2"
+    "blackstone3"
+    "blackstone4"
+    "blackstone5"
+    "blackstone6"
+    "blackstone7"
+    "blackstone8"
+    "blackstone9";
 }
 
-.blackstone1 { grid-area: blackcstone1; }
+.blackstone1 { grid-area: blackstone1; }
 
-.blackstone2 { grid-area: blackcstone2; }
+.blackstone2 { grid-area: blackstone2; }
 
-.blackstone3 { grid-area: blackcstone3; }
+.blackstone3 { grid-area: blackstone3; }
 
-.blackstone4 { grid-area: blackcstone4; }
+.blackstone4 { grid-area: blackstone4; }
 
-.blackstone5 { grid-area: blackcstone5; }
+.blackstone5 { grid-area: blackstone5; }
 
-.blackstone6 { grid-area: blackcstone6; }
+.blackstone6 { grid-area: blackstone6; }
 
-.blackstone7 { grid-area: blackcstone7; }
+.blackstone7 { grid-area: blackstone7; }
 
-.blackstone8 { grid-area: blackcstone8; }
+.blackstone8 { grid-area: blackstone8; }
 
-.blackstone9 { grid-area: blackcstone9; }
+.blackstone9 { grid-area: blackstone9; }
 
 .gameframe { 
     background-image: url(/src/static//img/gameboard.png);

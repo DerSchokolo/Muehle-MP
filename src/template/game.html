@@ -60,9 +60,10 @@
 
     // Create white stones
     for (i=0; i<9; i++) {
-        let newDiv = document.createElement("Div");
+        let newDiv = document.createElement("img");
         newDiv.id = "whitestone" + i;
         newDiv.classList.add("whitestone" + (i+1));
+        newDiv.src = "/src/static/img/whitestone.png";
         newDiv.innerHTML = "white";
         newDiv.draggable = "true";
         newDiv.addEventListener("dragstart", function (ereignis) {
@@ -78,16 +79,14 @@
             };
         });
         document.getElementById('tablewhite').appendChild(newDiv);
-        var img = document.createElement("img");
-        img.src = "/src/static/img/whitestone.png";
-        document.getElementById('whitestone'+i).appendChild(img);
     };
 
     // Create black stones
     for (i=0; i<9; i++) {
-        let newDiv = document.createElement("Div");
+        let newDiv = document.createElement("img");
         newDiv.id = "blackstone" + i;
         newDiv.classList.add("blackstone" + (i+1));
+        newDiv.src = "/src/static/img/blackstone.png";
         newDiv.innerHTML = "black";
         newDiv.draggable = "true";
         newDiv.addEventListener("dragstart", function (ereignis) {
