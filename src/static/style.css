@@ -80,7 +80,7 @@
 .blackstone9 { grid-area: blackcstone9; }
 
 .gameframe { 
-    background-image: url(/src/static/gameboard.png);
+    background-image: url(/src/static//img/gameboard.png);
     height:600px;
     width: 600px;
     background-size:auto;

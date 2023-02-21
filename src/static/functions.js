@@ -26,4 +26,3 @@ boardarray = [];
 for (i=0; i<24; i++) {
     boardarray[i] = new board(i, 'empty');
 };
-
