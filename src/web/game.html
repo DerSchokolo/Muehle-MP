@@ -13,12 +13,14 @@
 </head>
 
 <body>
-    <h1 id="phase">Setzphase</h1>
+    <div id="phase" class="phase">Setzphase</div>
     <div class="gameframealign">
         <div id="tablewhite" class="tablewhite"></div>
         <div id="gameframe" class="gameframe"></div>
         <div id="tableblack" class="tableblack"></div>
     </div>
+    <div id="notification" class="notification">Weiß am Zug!</div>
+
 </body>
 <script> 
     let whitemove = true;
@@ -47,6 +49,7 @@
                     whitemove = false;
                     gamephase();
                     detectmuehle(boardarray);
+                    document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
                     return Drop, whitemove, boardarray;
                 };
 
@@ -56,6 +59,7 @@
                     whitemove = true;
                     gamephase();
                     detectmuehle(boardarray);
+                    document.getElementById('notification').innerHTML = 'Weiß am Zug!';
                     return Drop, whitemove, boardarray;
                 };
             };

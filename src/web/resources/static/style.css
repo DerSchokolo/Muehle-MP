@@ -3,6 +3,8 @@
     justify-content: center;
     align-items: center;
     margin: 100px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .tablewhite {
@@ -42,6 +44,8 @@
 
 .whitestone9 { grid-area: whitestone9; }
 
+
+
 .tableblack {
   display: grid;
   grid-template-columns: 1fr;
@@ -79,6 +83,8 @@
 
 .blackstone9 { grid-area: blackstone9; }
 
+
+
 .gameframe { 
     background-image: url(/src/web/resources/img/gameboard.png);
     height:600px;
@@ -99,53 +105,69 @@
       ". field6 . field14 . field21 ."
       "field3 . . field15 . . field24";
   }
-  .field1 { grid-area: field1; }
 
-  .field1 { grid-area: field1; }
-  
-  .field2 { grid-area: field2; }
-  
-  .field3 { grid-area: field3; }
-  
-  .field4 { grid-area: field4; }
-  
-  .field5 { grid-area: field5; }
-  
-  .field6 { grid-area: field6; }
-  
-  .field7 { grid-area: field7; }
-  
-  .field8 { grid-area: field8; }
-  
-  .field9 { grid-area: field9; }
-  
-  .field10 { grid-area: field10; }
-  
-  .field11 { grid-area: field11; }
-  
-  .field12 { grid-area: field12; }
-  
-  .field13 { grid-area: field13; }
-  
-  .field14 { grid-area: field14; }
-  
-  .field15 { grid-area: field15; }
-  
-  .field16 { grid-area: field16; }
-  
-  .field17 { grid-area: field17; }
-  
-  .field18 { grid-area: field18; }
-  
-  .field19 { grid-area: field19; }
-  
-  .field20 { grid-area: field20; }
-  
-  .field21 { grid-area: field21; }
-  
-  .field22 { grid-area: field22; }
-  
-  .field23 { grid-area: field23; }
-  
-  .field24 { grid-area: field24; }
-  
+.field1 { grid-area: field1; }
+
+.field1 { grid-area: field1; }
+
+.field2 { grid-area: field2; }
+
+.field3 { grid-area: field3; }
+
+.field4 { grid-area: field4; }
+
+.field5 { grid-area: field5; }
+
+.field6 { grid-area: field6; }
+
+.field7 { grid-area: field7; }
+
+.field8 { grid-area: field8; }
+
+.field9 { grid-area: field9; }
+
+.field10 { grid-area: field10; }
+
+.field11 { grid-area: field11; }
+
+.field12 { grid-area: field12; }
+
+.field13 { grid-area: field13; }
+
+.field14 { grid-area: field14; }
+
+.field15 { grid-area: field15; }
+
+.field16 { grid-area: field16; }
+
+.field17 { grid-area: field17; }
+
+.field18 { grid-area: field18; }
+
+.field19 { grid-area: field19; }
+
+.field20 { grid-area: field20; }
+
+.field21 { grid-area: field21; }
+
+.field22 { grid-area: field22; }
+
+.field23 { grid-area: field23; }
+
+.field24 { grid-area: field24; }
+
+
+.notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.phase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  margin-top: 180px;
+}
