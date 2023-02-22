@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/src/static/style.css">
-    <script type="text/javascript" src="/src/static/functions.js"></script>
+    <link rel="stylesheet" href="resources/static/style.css">
+    <script type="text/javascript" src="resources/static/functions.js"></script>
 </head>
 <body>
     <h1 id="phase">Setzphase</h1>
@@ -63,7 +63,7 @@
         let newDiv = document.createElement("img");
         newDiv.id = "whitestone" + i;
         newDiv.classList.add("whitestone" + (i+1));
-        newDiv.src = "/src/static/img/whitestone.png";
+        newDiv.src = "/src/web/resources/img/whitestone.png";
         newDiv.innerHTML = "white";
         newDiv.draggable = "true";
         newDiv.addEventListener("dragstart", function (ereignis) {
@@ -86,7 +86,7 @@
         let newDiv = document.createElement("img");
         newDiv.id = "blackstone" + i;
         newDiv.classList.add("blackstone" + (i+1));
-        newDiv.src = "/src/static/img/blackstone.png";
+        newDiv.src = "/src/web/resources/img/blackstone.png";
         newDiv.innerHTML = "black";
         newDiv.draggable = "true";
         newDiv.addEventListener("dragstart", function (ereignis) {
