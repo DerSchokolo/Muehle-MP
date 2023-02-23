@@ -13,15 +13,12 @@ for (i=0; i<24; i++) {
     boardarray[i] = new board(i, 'empty');
 };
 
-let stonesInGame = 0;
-
-
 
 /////////////////////////////////////
 // functions
 ////////////////////////////////////
 
-// print input from grid in console
+// toggles the muehle event
 function muehleevent() {
     var element = document.getElementById(this.id);
     // gets the color of the stone to check that you dont destroy your own colored stone
@@ -46,11 +43,19 @@ function muehleevent() {
 
 // checks if the building phase of the game has finished
 function phasewatcher() {
-    if (stonesInGame == 18) {
+    let counter = 0; 
+
+    for (i=0; i < 18; i++) {
+        if (stoneshelf[i] == 'empty') {
+            counter++;
+        };
+    };  
+    
+    if (counter == 18) {
         document.getElementById('phase').innerHTML = "Zugphase";
-        return 'turnphase';
     };
 };
+
 
 // checks if muehle was detectet
 // returns  'white' for white muehle 
