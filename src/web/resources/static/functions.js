@@ -1,12 +1,42 @@
+// vars
+
 let killwhite = false;
 let killblack = false;
 
+// main game phase index
+// 'setzphase', 'zugphase', 'springphase'
+let gamephase = "setzphase";
+
+// constructur for boardfields object
+function board(field, color, original) {
+    this.field = field;
+    this.color = color; // White, black, empty
+    this.original = original; // saves original position of stone (provides data to prevent moving a stone two times in buildingphase)
+};
+
+// creates var vor every fieled on the board
+let boardarray = [];
+for (i=0; i<24; i++) {
+    boardarray[i] = new board(i, 'empty');
+};
+
+let stonesInGame = 0;
+
+
+
+/////////////////////////////////////
+// functions
+////////////////////////////////////
+
+
+
+
 // print input from grid in console
-function detectinput() {
+function muehleevent() {
     var selection = this.id;
     selection = Number(selection);
     console.log(selection);
-    if (killwhite == true && boardarray[selection].color == 'white') {
+    if (killwhite == true && boardarray[selection].color == 'white' && gamephase == 'zugphase' || gamephase == 'springphase') {
         console.log('killwhite')
         var element = document.getElementById(selection);
         element.parentNode.removeChild(element);
@@ -14,7 +44,7 @@ function detectinput() {
         return;
     };
     
-    if (killblack == true && boardarray[selection].color == 'black') {
+    if (killblack == true && boardarray[selection].color == 'black' && gamephase == 'zugphase' || gamephase == 'springphase') {
         console.log('killblack')
         var element = document.getElementById(selection);
         element.parentNode.removeChild(element);
@@ -26,28 +56,11 @@ function detectinput() {
 };
 
 // checks if the building phase of the game has finished
-function gamephase() {
-    counter = 0;
-    for (i=0; i<24; i++) {
-        if (boardarray[i].color == 'empty') {
-            counter++;
-        };    
-    };
-    if (counter == 6){
+function phasewatcher() {
+    if (stonesInGame == 18) {
         document.getElementById('phase').innerHTML = "Zugphase";
+        return 'turnphase';
     };
-};
-
-// constructur for boardfields object
-function board(field, color) {
-    this.field = field;
-    this.color = color; // White, black, empty
-};
-
-// creates var vor every fieled on the board
-let boardarray = [];
-for (i=0; i<24; i++) {
-    boardarray[i] = new board(i, 'empty');
 };
 
 // checks if muehle was detectet
@@ -65,13 +78,11 @@ function detectmuehle(boardarray) {
                 console.log('mühle detectet')
                 if (color == 'white') {
                     killblack = true;
-                    muehleevent(color);
                     return 'white';
                 };
     
                 if (color == 'black') {
                     killwhite = true;
-                    muehleevent(color);
                     return 'black';
                 };
             };
@@ -88,13 +99,11 @@ function detectmuehle(boardarray) {
             console.log('mühle detectet');
             if (color == 'white') {
                 killblack = true;
-                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
                 killwhite = true;
-                muehleevent(color);
                 return 'black';
             };
         };
@@ -104,13 +113,11 @@ function detectmuehle(boardarray) {
             console.log('mühle detectet');
             if (color == 'white') {
                 killblack = true;
-                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
                 killwhite = true;
-                muehleevent(color);
                 return 'black';
             };
         };
@@ -120,13 +127,11 @@ function detectmuehle(boardarray) {
             console.log('mühle detectet');
             if (color == 'white') {
                 killblack = true;
-                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
                 killwhite = true;
-                muehleevent(color);
                 return 'black';
             };
         };
@@ -136,13 +141,11 @@ function detectmuehle(boardarray) {
             console.log('mühle detectet');
             if (color == 'white') {
                 killblack = true;
-                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
                 killwhite = true;
-                muehleevent(color);
                 return 'black';
             };
         };
@@ -152,13 +155,11 @@ function detectmuehle(boardarray) {
             console.log('mühle detectet');
             if (color == 'white') {
                 killblack = true;
-                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
                 killwhite = true;
-                muehleevent(color);
                 return 'black';
             };
         };
@@ -173,7 +174,6 @@ function detectmuehle(boardarray) {
 
             if (color == 'black') {
                 killwhite = true;
-                muehleevent(color);
                 return 'black';
             };
         };
@@ -183,12 +183,10 @@ function detectmuehle(boardarray) {
             console.log('mühle detectet');
             if (color == 'white') {
                 killblack = true;
-                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
-                muehleevent(color);
                 killwhite = true;
                 return 'black';
             };
@@ -199,13 +197,11 @@ function detectmuehle(boardarray) {
             console.log('mühle detectet');
             if (color == 'white') {
                 killblack = true;
-                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
                 killwhite = true;
-                muehleevent(color);
                 return 'black';
             };
         };
@@ -214,15 +210,3 @@ function detectmuehle(boardarray) {
     console.log('keine mühle detectet')
     return 'nomuehle';
 };
-
-// triggers muehle event
-function muehleevent(color){
-    if (color == 'white') {
-        document.getElementById('notification').innerHTML = 'Weiß darf einenen Stein von Schwarz entfernen!'
-        
-    };
-
-    if (color == 'black') {
-        document.getElementById('notification').innerHTML = 'Schwarz darf einenen Stein von Weiß entfernen!'
-    };
-}; 
