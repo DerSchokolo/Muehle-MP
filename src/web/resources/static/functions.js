@@ -1,5 +1,5 @@
-var killwhite = false;
-var killblack = false
+let killwhite = false;
+let killblack = false
 
 // print input from grid in console
 function detectinput() {
@@ -7,9 +7,19 @@ function detectinput() {
     selection = Number(selection);
     console.log(selection);
     if (killwhite == true && boardarray[selection].color == 'white') {
-        console.log('fgfdg')
+        console.log('killwhite')
         var element = document.getElementById(selection);
         element.parentNode.removeChild(element);
+        killwhite = false;
+        return;
+    };
+    
+    if (killblack == true && boardarray[selection].color == 'black') {
+        console.log('killblack')
+        var element = document.getElementById(selection);
+        element.parentNode.removeChild(element);
+        killblack = false;
+        return;
     }; 
 
     // !!!! TODO finish function
@@ -54,10 +64,14 @@ function detectmuehle(boardarray) {
             if (boardarray[counter].color == color && boardarray[counter+1].color == color && boardarray[counter+2].color == color) {
                 console.log('mühle detectet')
                 if (color == 'white') {
+                    killblack = true;
+                    muehleevent(color);
                     return 'white';
                 };
     
                 if (color == 'black') {
+                    killwhite = true;
+                    muehleevent(color);
                     return 'black';
                 };
             };
@@ -73,10 +87,14 @@ function detectmuehle(boardarray) {
         if (boardarray[0].color == color && boardarray[9].color == color && boardarray[21].color == color) {
             console.log('mühle detectet');
             if (color == 'white') {
+                killblack = true;
+                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
+                killwhite = true;
+                muehleevent(color);
                 return 'black';
             };
         };
@@ -85,10 +103,14 @@ function detectmuehle(boardarray) {
         if (boardarray[3].color == color && boardarray[10].color == color && boardarray[18].color == color) {
             console.log('mühle detectet');
             if (color == 'white') {
+                killblack = true;
+                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
+                killwhite = true;
+                muehleevent(color);
                 return 'black';
             };
         };
@@ -97,10 +119,14 @@ function detectmuehle(boardarray) {
         if (boardarray[6].color == color && boardarray[11].color == color && boardarray[15].color == color) {
             console.log('mühle detectet');
             if (color == 'white') {
+                killblack = true;
+                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
+                killwhite = true;
+                muehleevent(color);
                 return 'black';
             };
         };
@@ -109,10 +135,14 @@ function detectmuehle(boardarray) {
         if (boardarray[1].color == color && boardarray[4].color == color && boardarray[7].color == color) {
             console.log('mühle detectet');
             if (color == 'white') {
+                killblack = true;
+                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
+                killwhite = true;
+                muehleevent(color);
                 return 'black';
             };
         };
@@ -121,10 +151,14 @@ function detectmuehle(boardarray) {
         if (boardarray[16].color == color && boardarray[19].color == color && boardarray[22].color == color) {
             console.log('mühle detectet');
             if (color == 'white') {
+                killblack = true;
+                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
+                killwhite = true;
+                muehleevent(color);
                 return 'black';
             };
         };
@@ -133,10 +167,13 @@ function detectmuehle(boardarray) {
         if (boardarray[8].color == color && boardarray[12].color == color && boardarray[17].color == color) {
             console.log('mühle detectet');
             if (color == 'white') {
+                killblack = true;
                 return 'white';
             };
 
             if (color == 'black') {
+                killwhite = true;
+                muehleevent(color);
                 return 'black';
             };
         };
@@ -145,10 +182,14 @@ function detectmuehle(boardarray) {
         if (boardarray[5].color == color && boardarray[13].color == color && boardarray[20].color == color) {
             console.log('mühle detectet');
             if (color == 'white') {
+                killblack = true;
+                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
+                muehleevent(color);
+                killwhite = true;
                 return 'black';
             };
         };
@@ -157,10 +198,14 @@ function detectmuehle(boardarray) {
         if (boardarray[2].color == color && boardarray[13].color == color && boardarray[23].color == color) {
             console.log('mühle detectet');
             if (color == 'white') {
+                killblack = true;
+                muehleevent(color);
                 return 'white';
             };
 
             if (color == 'black') {
+                killwhite = true;
+                muehleevent(color);
                 return 'black';
             };
         };

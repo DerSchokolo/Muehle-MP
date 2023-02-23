@@ -48,8 +48,8 @@
                     boardarray[newDiv.id].color = 'white';
                     whitemove = false;
                     gamephase();
-                    detectmuehle(boardarray);
                     document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
+                    detectmuehle(boardarray);
                     return Drop, whitemove, boardarray;
                 };
 
@@ -58,8 +58,8 @@
                     boardarray[newDiv.id].color = 'black';
                     whitemove = true;
                     gamephase();
-                    detectmuehle(boardarray);
                     document.getElementById('notification').innerHTML = 'Weiß am Zug!';
+                    detectmuehle(boardarray);
                     return Drop, whitemove, boardarray;
                 };
             };
