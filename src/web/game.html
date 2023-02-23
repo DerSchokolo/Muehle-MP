@@ -9,6 +9,7 @@
     <!-- Links -->
     <link rel="icon" type="image/x-icon" href="resources/img/favicon.ico">
     <link rel="stylesheet" href="resources/static/style.css">
+    <script type="text/javascript" src="resources/static/objects.js"></script>
     <script type="text/javascript" src="resources/static/functions.js"></script>
 </head>
 
@@ -24,40 +25,44 @@
 </body>
 <script> 
     let whitemove = true;
+    let stoneshelf = [];
+    let stoneid;
 
     // Create game grid
     for (i=1; i<25; i++) {
         let newDiv = document.createElement("Div");
         newDiv.id = (i-1);
         newDiv.classList.add("field" + i);
-        newDiv.addEventListener("click", detectinput);
-        newDiv.innerHTML = i-1;
+        newDiv.addEventListener("click", muehleevent);
+        //newDiv.innerHTML = i-1; Text for debuging
         newDiv.addEventListener("dragover", function (ereignis) {
             ereignis.preventDefault();
             ereignis.dataTransfer.dropEffect = "move";
         });
+
+        // actions for board
         newDiv.addEventListener("drop", function (ereignis) {
             ereignis.preventDefault;
 
             // checks for right color and if field is empty
-            if (Drop==true && boardarray[newDiv.id].color=='empty') {
-                ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
-
+            if (Drop==true && boardarray[newDiv.id].stone=='empty') {
                 // whites turn
-                if (whitemove == true) {
-                    boardarray[newDiv.id].color = 'white';
+                if (whitemove == true && (stoneshelf[stoneid] != 'empty')) {
+                    ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
+                    boardarray[newDiv.id].stone = stoneshelf[stoneid];
+                    stoneshelf[stoneid] = 'empty'; 
                     whitemove = false;
-                    gamephase();
                     document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
                     detectmuehle(boardarray);
                     return Drop, whitemove, boardarray;
                 };
 
                 // blacks turn
-                if (whitemove == false) {
-                    boardarray[newDiv.id].color = 'black';
+                if (whitemove == false && stoneshelf[stoneid+9] != 'empty') {
+                    ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
+                    boardarray[newDiv.id].stone = stoneshelf[stoneid+9];
+                    stoneshelf[stoneid+9] = 'empty'; 
                     whitemove = true;
-                    gamephase();
                     document.getElementById('notification').innerHTML = 'Weiß am Zug!';
                     detectmuehle(boardarray);
                     return Drop, whitemove, boardarray;
@@ -75,16 +80,20 @@
         newDiv.src = "/src/web/resources/img/whitestone.png";
         newDiv.innerHTML = "white";
         newDiv.draggable = "true";
+        stoneshelf[i] = new stone(newDiv.id, 'white', 'shelf');
+
+        // actions for white stones
         newDiv.addEventListener("dragstart", function (ereignis) {
             if (whitemove == true) {
                 Drop = true;
                 ereignis.dataTransfer.setData("text/plain", ereignis.target.id);
-                return Drop;
+                stoneid = newDiv.id;
+                stoneid = stoneid.slice(10);
+                stoneid = Number(stoneid);
             }
 
             else {
                 Drop = false;
-                return Drop;
             };
         });
         document.getElementById('tablewhite').appendChild(newDiv);
@@ -98,19 +107,22 @@
         newDiv.src = "/src/web/resources/img/blackstone.png";
         newDiv.innerHTML = "black";
         newDiv.draggable = "true";
+        stoneshelf[i+9] = new stone(newDiv.id, 'black', 'shelf');
+
+                // actions for black stones
         newDiv.addEventListener("dragstart", function (ereignis) {
             if (whitemove == false) {
                 Drop = true;
                 ereignis.dataTransfer.setData("text/plain", ereignis.target.id);
-                return Drop;
+                stoneid = newDiv.id;
+                stoneid = stoneid.slice(10);
+                stoneid = Number(stoneid);
             }
 
             else {
                 Drop = false;
-                return Drop;
             };
         });
-
         document.getElementById('tableblack').appendChild(newDiv);
     };
 

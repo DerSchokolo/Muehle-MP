@@ -32,3 +32,12 @@ Wagerecht:
 
 Quellen:
 https://www.youtube.com/watch?v=SE1HXc2V3Xk
+
+## Objects
+board
+    field       //field of the board
+    stone       //stone which is on the board       
+
+stone
+    color       //color of the stone
+    position    //position of the stone
