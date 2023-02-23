@@ -1,6 +1,18 @@
+var killwhite = false;
+var killblack = false
+
 // print input from grid in console
 function detectinput() {
-    console.log('input detectet field: ' + this.id);
+    var selection = this.id;
+    selection = Number(selection);
+    console.log(selection);
+    if (killwhite == true && boardarray[selection].color == 'white') {
+        console.log('fgfdg')
+        var element = document.getElementById(selection);
+        element.parentNode.removeChild(element);
+    }; 
+
+    // !!!! TODO finish function
 };
 
 // checks if the building phase of the game has finished
@@ -158,3 +170,14 @@ function detectmuehle(boardarray) {
     return 'nomuehle';
 };
 
+// triggers muehle event
+function muehleevent(color){
+    if (color == 'white') {
+        document.getElementById('notification').innerHTML = 'Weiß darf einenen Stein von Schwarz entfernen!'
+        
+    };
+
+    if (color == 'black') {
+        document.getElementById('notification').innerHTML = 'Schwarz darf einenen Stein von Weiß entfernen!'
+    };
+}; 
