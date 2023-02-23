@@ -1,5 +1,5 @@
 let killwhite = false;
-let killblack = false
+let killblack = false;
 
 // print input from grid in console
 function detectinput() {
