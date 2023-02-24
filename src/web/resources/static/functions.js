@@ -58,148 +58,146 @@ function phasewatcher() {
 
 
 // checks if muehle was detectet
+
+// inputs   'color' of the stone
+//          'boardarray' gets position of all stones
+
 // returns  'white' for white muehle 
 //          'black' for black muehle
 //          'nomuehle' for no detectet muehle
-function detectmuehle(boardarray) {
+function detectmuehle(boardarray, color) {
+
+    console.log(color);
 
     // vertical muehle
-    let color = "white";
-    for (i=0; i<2; i++) {
-        let counter = 0;
-        for (j=0; j<8; j++) {
-            if (boardarray[counter].stone.color == color && boardarray[counter+1].stone.color == color && boardarray[counter+2].stone.color == color) {
-                console.log('mühle detectet')
-                if (color == 'white') {
-                    document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein!';
-                    killblack = true;
-                };
-    
-                if (color == 'black') {
-                    document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
-                    killwhite = true;
-                };
+    let counter = 0;
+    for (j=0; j<8; j++) {
+        if (boardarray[counter].stone.color == color && boardarray[counter+1].stone.color == color && boardarray[counter+2].stone.color == color) {
+            console.log('mühle detectet')
+            if (color == 'white') {
+                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein!';
+                killblack = true;
             };
-            counter = counter + 3;
+
+            if (color == 'black') {
+                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+                killwhite = true;
+            };
         };
-        color = "black";
-    }; 
+        counter = counter + 3;
+    };
 
     // horizontal muehle
-    color = "white";
-    for (i=0; i<2; i++) {
-        // vertical 0-9-21
-        if (boardarray[0].stone.color == color && boardarray[9].stone.color == color && boardarray[21].stone.color == color) {
-            console.log('mühle detectet');
-            if (color == 'white') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
-                killblack = true;
-            };
 
-            if (color == 'black') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
-                killwhite = true;
-            };
+    // horizontal 0-9-21
+    if (boardarray[0].stone.color == color && boardarray[9].stone.color == color && boardarray[21].stone.color == color) {
+        console.log('mühle detectet');
+        if (color == 'white') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            killblack = true;
         };
 
-        // horizontal 3-10-18
-        if (boardarray[3].stone.color == color && boardarray[10].stone.color == color && boardarray[18].stone.color == color) {
-            console.log('mühle detectet');
-            if (color == 'white') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
-                killblack = true;
-            };
-
-            if (color == 'black') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
-                killwhite = true;
-            };
+        if (color == 'black') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            killwhite = true;
         };
-
-        // horizontal 6-11-15
-        if (boardarray[6].stone.color == color && boardarray[11].stone.color == color && boardarray[15].stone.color == color) {
-            console.log('mühle detectet');
-            if (color == 'white') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
-                killblack = true;
-            };
-
-            if (color == 'black') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
-                killwhite = true;
-            };
-        };
-
-        // horizontal 1-4-7
-        if (boardarray[1].stone.color == color && boardarray[4].stone.color == color && boardarray[7].stone.color == color) {
-            console.log('mühle detectet');
-            if (color == 'white') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
-                killblack = true;
-            };
-
-            if (color == 'black') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
-                killwhite = true;
-            };
-        };
-
-        // horizontal 16-19-22
-        if (boardarray[16].stone.color == color && boardarray[19].stone.color == color && boardarray[22].stone.color == color) {
-            console.log('mühle detectet');
-            if (color == 'white') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
-                killblack = true;
-            };
-
-            if (color == 'black') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
-                killwhite = true;
-            };
-        };
-
-        // horizontal 8-12-17
-        if (boardarray[8].stone.color == color && boardarray[12].stone.color == color && boardarray[17].stone.color == color) {
-            console.log('mühle detectet');
-            if (color == 'white') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
-                killblack = true;
-            };
-
-            if (color == 'black') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
-                killwhite = true;
-            };
-        };
-
-        // horizontal 5-13-20
-        if (boardarray[5].stone.color == color && boardarray[13].stone.color == color && boardarray[20].stone.color == color) {
-            console.log('mühle detectet');
-            if (color == 'white') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
-                killblack = true;
-            };
-
-            if (color == 'black') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
-                killwhite = true;
-            };
-        };
-
-        // horizontal 2-14-23
-        if (boardarray[2].stone.color == color && boardarray[13].stone.color == color && boardarray[23].stone.color == color) {
-            console.log('mühle detectet');
-            if (color == 'white') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
-                killblack = true;
-            };
-
-            if (color == 'black') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
-                killwhite = true;
-            };
-        };
-        color = "black";
     };
-    console.log('keine mühle detectet')
+
+    // horizontal 3-10-18
+    if (boardarray[3].stone.color == color && boardarray[10].stone.color == color && boardarray[18].stone.color == color) {
+        console.log('mühle detectet');
+        if (color == 'white') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            killblack = true;
+        };
+
+        if (color == 'black') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            killwhite = true;
+        };
+    };
+
+    // horizontal 6-11-15
+    if (boardarray[6].stone.color == color && boardarray[11].stone.color == color && boardarray[15].stone.color == color) {
+        console.log('mühle detectet');
+        if (color == 'white') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            killblack = true;
+        };
+
+        if (color == 'black') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            killwhite = true;
+        };
+    };
+
+    // horizontal 1-4-7
+    if (boardarray[1].stone.color == color && boardarray[4].stone.color == color && boardarray[7].stone.color == color) {
+        console.log('mühle detectet');
+        if (color == 'white') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            killblack = true;
+        };
+
+        if (color == 'black') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            killwhite = true;
+        };
+    };
+
+    // horizontal 16-19-22
+    if (boardarray[16].stone.color == color && boardarray[19].stone.color == color && boardarray[22].stone.color == color) {
+        console.log('mühle detectet');
+        if (color == 'white') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            killblack = true;
+        };
+
+        if (color == 'black') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            killwhite = true;
+        };
+    };
+
+    // horizontal 8-12-17
+    if (boardarray[8].stone.color == color && boardarray[12].stone.color == color && boardarray[17].stone.color == color) {
+        console.log('mühle detectet');
+        if (color == 'white') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            killblack = true;
+        };
+
+        if (color == 'black') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            killwhite = true;
+        };
+    };
+
+    // horizontal 5-13-20
+    if (boardarray[5].stone.color == color && boardarray[13].stone.color == color && boardarray[20].stone.color == color) {
+        console.log('mühle detectet');
+        if (color == 'white') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            killblack = true;
+        };
+
+        if (color == 'black') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            killwhite = true;
+        };
+    };
+
+    // horizontal 2-14-23
+    if (boardarray[2].stone.color == color && boardarray[13].stone.color == color && boardarray[23].stone.color == color) {
+        console.log('mühle detectet');
+        if (color == 'white') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            killblack = true;
+        };
+
+        if (color == 'black') {
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            killwhite = true;
+        };
+    };
 };
