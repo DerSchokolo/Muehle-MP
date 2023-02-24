@@ -54,7 +54,7 @@
                     stoneshelf[stoneid] = 'empty'; 
                     whitemove = false;
                     document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
-                    detectmuehle(boardarray);
+                    detectmuehle(boardarray, 'white');
                     return Drop, whitemove, boardarray;
                 };
 
@@ -66,7 +66,7 @@
                     stoneshelf[stoneid+9] = 'empty'; 
                     whitemove = true;
                     document.getElementById('notification').innerHTML = 'Weiß am Zug!';
-                    detectmuehle(boardarray);
+                    detectmuehle(boardarray, 'black');
                     return Drop, whitemove, boardarray;
                 };
             };
