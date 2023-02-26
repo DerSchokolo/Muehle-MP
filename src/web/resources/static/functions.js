@@ -28,6 +28,7 @@ function muehleevent() {
     if (killwhite && stonecolor == 'whitestone') {
         element.removeChild(element.firstChild);
         killwhite = false;
+        //delets the muehle status from all stones in the muehle of the deletet stone
         for (i=0; i<16; i++) {
             if (boardarray[this.id].stone.muehle[i] == true) {
                 console.log(i);
@@ -46,6 +47,7 @@ function muehleevent() {
     if (killblack && stonecolor == 'blackstone') {
         element.removeChild(element.firstChild);
         killblack = false;
+        //delets the muehle status from all stones in the muehle of the deletet stone
         for (i=0; i<16; i++) {
             if (boardarray[this.id].stone.muehle[i] == true) {
                 console.log(i);
