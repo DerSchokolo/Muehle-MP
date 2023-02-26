@@ -9,5 +9,5 @@ function stone(name, color, position) {
     this.name = name;
     this.color = color;
     this.position = position;
-    this.muehle = 'no';
+    this.muehle = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
 };

@@ -28,14 +28,48 @@ function muehleevent() {
     if (killwhite && stonecolor == 'whitestone') {
         element.removeChild(element.firstChild);
         killwhite = false;
+        var muehle;
+        for (i=0; i<24; i++) {
+            for (j=0; j<16; j++) {
+                if (boardarray[i].stone.muehle != undefined) {
+                    if (boardarray[i].stone.muehle[j] == true) {
+                        muehle = j;
+                    }
+
+                };
+
+            };
+        };
+        for (i=0; i<16; i++) {
+            if (boardarray[i].stone.muehle != undefined) {
+                boardarray[i].stone.muehle[muehle] = false;
+            };
+        };
         boardarray[this.id].stone = 'empty';
-        document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
+        document.getElementById('notification').innerHTML = 'Weiß am Zug!';
     };
 
     //  kill black stone
     if (killblack && stonecolor == 'blackstone') {
         element.removeChild(element.firstChild);
         killblack = false;
+        var muehle;
+        for (i=0; i<24; i++) {
+            for (j=0; j<16; j++) {
+                if (boardarray[i].stone.muehle != undefined) {
+                    if (boardarray[i].stone.muehle[j] == true && boardarray[i].stone.color == 'black') {
+                        muehle = j;
+                    }
+
+                };
+
+            };
+        };
+        for (i=0; i<16; i++) {
+            if (boardarray[i].stone.muehle != undefined) {
+                boardarray[i].stone.muehle[muehle] = false;
+            };
+        };
         boardarray[this.id].stone = 'empty';
         document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
     };
@@ -73,30 +107,25 @@ function detectmuehle(boardarray, color) {
     // muehle 0-7
     let counter = 0;
     for (j=0; j<8; j++) {
-        if (boardarray[counter].stone.color == color && boardarray[counter+1].stone.color == color && boardarray[counter+2].stone.color == color && boardarray[counter].stone.muehle != j) {
+        if (boardarray[counter].stone.color == color && boardarray[counter+1].stone.color == color && boardarray[counter+2].stone.color == color && boardarray[counter].stone.muehle[j] != true && boardarray[counter+1].stone.muehle[j] != true && boardarray[counter+2].stone.muehle[j] != true) {
             console.log('mühle detectet')
             if (color == 'white') {
                 document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein!';
                 // adds the current muehle to the stones
-                boardarray[counter].stone.muehle = j;
-                boardarray[counter+1].stone.muehle = j;
-                boardarray[counter+2].stone.muehle = j;
+                boardarray[counter].stone.muehle[j] = true;
+                boardarray[counter+1].stone.muehle[j] = true;
+                boardarray[counter+2].stone.muehle[j] = true;
                 killblack = true;
             };
 
             if (color == 'black') {
                 document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
                 // adds the current muehle to the stones
-                boardarray[counter].stone.muehle = j;
-                boardarray[counter+1].stone.muehle = j;
-                boardarray[counter+2].stone.muehle = j;
+                boardarray[counter].stone.muehle[j] = true;
+                boardarray[counter+1].stone.muehle[j] = true;
+                boardarray[counter+2].stone.muehle[j] = true;
                 killwhite = true;
             };
-        }
-        else {
-            boardarray[counter].stone.muehle = 'no';
-            boardarray[counter+1].stone.muehle = 'no';
-            boardarray[counter+2].stone.muehle = 'no';
         };
         counter = counter + 3;
     };
@@ -105,225 +134,225 @@ function detectmuehle(boardarray, color) {
 
     // horizontal 0-9-21
     // muehle 8
-    if (boardarray[0].stone.color == color && boardarray[9].stone.color == color && boardarray[21].stone.color == color && boardarray[0].stone.muehle != 8) {
+    if (boardarray[0].stone.color == color && boardarray[9].stone.color == color && boardarray[21].stone.color == color && boardarray[0].stone.muehle[8] != true) {
         console.log('mühle detectet');
         if (color == 'white') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
             // adds the current muehle to the stones
-            boardarray[0].stone.muehle = 8;
-            boardarray[9].stone.muehle = 8;
-            boardarray[21].stone.muehle = 8;
+            boardarray[0].stone.muehle[8] = true;
+            boardarray[9].stone.muehle[8] = true;
+            boardarray[21].stone.muehle[8] = true;
             killblack = true;
         };
 
         if (color == 'black') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
             // adds the current muehle to the stones
-            boardarray[0].stone.muehle = 8;
-            boardarray[9].stone.muehle = 8;
-            boardarray[21].stone.muehle = 8;
+            boardarray[0].stone.muehle[8] = true;
+            boardarray[9].stone.muehle[8] = true;
+            boardarray[21].stone.muehle[8] = true;
             killwhite = true;
         };
     }
-    else {
-        boardarray[0].stone.muehle = 'no';
-        boardarray[9].stone.muehle = 'no';
-        boardarray[21].stone.muehle = 'no';
+    else if (boardarray[0].stone.muehle != undefined && boardarray[9].stone.muehle != undefined && boardarray[21].stone.muehle != undefined) {
+        boardarray[0].stone.muehle[8] = false;
+        boardarray[9].stone.muehle[8] = false;
+        boardarray[21].stone.muehle[8] = false;
     };
 
     // horizontal 3-10-18
     // muehle 9
-    if (boardarray[3].stone.color == color && boardarray[10].stone.color == color && boardarray[18].stone.color == color && boardarray[3].stone.muehle != 9) {
+    if (boardarray[3].stone.color == color && boardarray[10].stone.color == color && boardarray[18].stone.color == color && boardarray[3].stone.muehle[9] != true) {
         console.log('mühle detectet');
         if (color == 'white') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
             // adds the current muehle to the stones
-            boardarray[3].stone.muehle = 9;
-            boardarray[10].stone.muehle = 9;
-            boardarray[18].stone.muehle = 9;
+            boardarray[3].stone.muehle[9] = true;
+            boardarray[10].stone.muehle[9] = true;
+            boardarray[18].stone.muehle[9] = true;
             killblack = true;
         };
 
         if (color == 'black') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
             // adds the current muehle to the stones
-            boardarray[3].stone.muehle = 9;
-            boardarray[10].stone.muehle = 9;
-            boardarray[18].stone.muehle = 9;
+            boardarray[3].stone.muehle[9] = true;
+            boardarray[10].stone.muehle[9] = true;
+            boardarray[18].stone.muehle[9] = true;
             killwhite = true;
         };
     }
-    else {
-        boardarray[3].stone.muehle = 'no';
-        boardarray[10].stone.muehle = 'no';
-        boardarray[18].stone.muehle = 'no';
+    else if (boardarray[3].stone.muehle != undefined && boardarray[10].stone.muehle != undefined && boardarray[18].stone.muehle != undefined) {
+        boardarray[3].stone.muehle[9] = false;
+        boardarray[10].stone.muehle[9] = false;
+        boardarray[18].stone.muehle[9] = false;
     };
 
     // horizontal 6-11-15
     // muehle 10
-    if (boardarray[6].stone.color == color && boardarray[11].stone.color == color && boardarray[15].stone.color == color && boardarray[6].stone.muehle != 10) {
+    if (boardarray[6].stone.color == color && boardarray[11].stone.color == color && boardarray[15].stone.color == color && boardarray[6].stone.muehle[10] != true) {
         console.log('mühle detectet');
         if (color == 'white') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
             // adds the current muehle to the stones
-            boardarray[6].stone.muehle = 10;
-            boardarray[11].stone.muehle = 10;
-            boardarray[15].stone.muehle = 10;
+            boardarray[6].stone.muehle[10] = true;
+            boardarray[11].stone.muehle[10] = true;
+            boardarray[15].stone.muehle[10] = true;
             killblack = true;
         };
 
         if (color == 'black') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
             // adds the current muehle to the stones
-            boardarray[6].stone.muehle = 10;
-            boardarray[11].stone.muehle = 10;
-            boardarray[15].stone.muehle = 10;
+            boardarray[6].stone.muehle[10] = true;
+            boardarray[11].stone.muehle[10] = true;
+            boardarray[15].stone.muehle[10] = true;
             killwhite = true;
         };
     }
-    else {
-        boardarray[6].stone.muehle = 'no';
-        boardarray[11].stone.muehle = 'no';
-        boardarray[15].stone.muehle = 'no';
+    else if (boardarray[6].stone.muehle != undefined && boardarray[11].stone.muehle != undefined && boardarray[15].stone.muehle != undefined) {
+        boardarray[6].stone.muehle[10] = false;
+        boardarray[11].stone.muehle[10] = false;
+        boardarray[15].stone.muehle[10] = false;
     };
 
     // horizontal 1-4-7
     // muehle 11
-    if (boardarray[1].stone.color == color && boardarray[4].stone.color == color && boardarray[7].stone.color == color && boardarray[1].stone.muehle != 11) {
+    if (boardarray[1].stone.color == color && boardarray[4].stone.color == color && boardarray[7].stone.color == color && boardarray[1].stone.muehle[11] != true) {
         console.log('mühle detectet');
         if (color == 'white') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
             // adds the current muehle to the stones
-            boardarray[1].stone.muehle = 11;
-            boardarray[4].stone.muehle = 11;
-            boardarray[7].stone.muehle = 11;
+            boardarray[1].stone.muehle[11] = true;
+            boardarray[4].stone.muehle[11] = true;
+            boardarray[7].stone.muehle[11] = true;
             killblack = true;
         };
 
         if (color == 'black') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
             // adds the current muehle to the stones
-            boardarray[1].stone.muehle = 11;
-            boardarray[4].stone.muehle = 11;
-            boardarray[7].stone.muehle = 11;
+            boardarray[1].stone.muehle[11] = true;
+            boardarray[4].stone.muehle[11] = true;
+            boardarray[7].stone.muehle[11] = true;
             killwhite = true;
         };
     }
-    else {
-        boardarray[1].stone.muehle = 'no';
-        boardarray[4].stone.muehle = 'no';
-        boardarray[7].stone.muehle = 'no';
+    else if (boardarray[1].stone.muehle != undefined && boardarray[4].stone.muehle != undefined && boardarray[7].stone.muehle != undefined) {
+        boardarray[1].stone.muehle[11] = false;
+        boardarray[4].stone.muehle[11] = false;
+        boardarray[7].stone.muehle[11] = false;
     };
 
     // horizontal 16-19-22
     // muehle 12
-    if (boardarray[16].stone.color == color && boardarray[19].stone.color == color && boardarray[22].stone.color == color && boardarray[16].stone.muehle != 12) {
+    if (boardarray[16].stone.color == color && boardarray[19].stone.color == color && boardarray[22].stone.color == color && boardarray[16].stone.muehle[12] != true) {
         console.log('mühle detectet');
         if (color == 'white') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
             // adds the current muehle to the stones
-            boardarray[16].stone.muehle = 12;
-            boardarray[19].stone.muehle = 12;
-            boardarray[22].stone.muehle = 12;
+            boardarray[16].stone.muehle[12] = true;
+            boardarray[19].stone.muehle[12] = true;
+            boardarray[22].stone.muehle[12] = true;
             killblack = true;
         };
 
         if (color == 'black') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
             // adds the current muehle to the stones
-            boardarray[16].stone.muehle = 12;
-            boardarray[19].stone.muehle = 12;
-            boardarray[22].stone.muehle = 12;
+            boardarray[16].stone.muehle[12] = true;
+            boardarray[19].stone.muehle[12] = true;
+            boardarray[22].stone.muehle[12] = true;
             killwhite = true;
         };
     }
-    else {
-        boardarray[16].stone.muehle = 'no';
-        boardarray[19].stone.muehle = 'no';
-        boardarray[22].stone.muehle = 'no';
+    else if (boardarray[16].stone.muehle != undefined && boardarray[19].stone.muehle != undefined && boardarray[22].stone.muehle != undefined) {
+        boardarray[16].stone.muehle[12] = false;
+        boardarray[19].stone.muehle[12] = false;
+        boardarray[22].stone.muehle[12] = false;
     };
 
     // horizontal 8-12-17
     // muehle 13    
-    if (boardarray[8].stone.color == color && boardarray[12].stone.color == color && boardarray[17].stone.color == color && boardarray[8].stone.muehle != 13) {
+    if (boardarray[8].stone.color == color && boardarray[12].stone.color == color && boardarray[17].stone.color == color && boardarray[8].stone.muehle[13] != true) {
         console.log('mühle detectet');
         if (color == 'white') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
             // adds the current muehle to the stones
-            boardarray[8].stone.muehle = 13;
-            boardarray[12].stone.muehle = 13;
-            boardarray[17].stone.muehle = 13;
+            boardarray[8].stone.muehle[13] = true;
+            boardarray[12].stone.muehle[13] = true;
+            boardarray[17].stone.muehle[13] = true;
             killblack = true;
         };
 
         if (color == 'black') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
             // adds the current muehle to the stones
-            boardarray[8].stone.muehle = 13;
-            boardarray[12].stone.muehle = 13;
-            boardarray[17].stone.muehle = 13;
+            boardarray[8].stone.muehle[13] = true;
+            boardarray[12].stone.muehle[13] = true;
+            boardarray[17].stone.muehle[13] = true;
             killwhite = true;
         };
     }
-    else {
-        boardarray[8].stone.muehle = 'no';
-        boardarray[12].stone.muehle = 'no';
-        boardarray[17].stone.muehle = 'no';
+    else if (boardarray[8].stone.muehle != undefined && boardarray[12].stone.muehle != undefined && boardarray[17].stone.muehle != undefined) {
+        boardarray[8].stone.muehle[13] = false;
+        boardarray[12].stone.muehle[13] = false;
+        boardarray[17].stone.muehle[13] = false;
     };
 
     // horizontal 5-13-20
     // muehle 14
-    if (boardarray[5].stone.color == color && boardarray[13].stone.color == color && boardarray[20].stone.color == color && boardarray[5].stone.muehle != 14) {
+    if (boardarray[5].stone.color == color && boardarray[13].stone.color == color && boardarray[20].stone.color == color && boardarray[5].stone.muehle[14] != true) {
         console.log('mühle detectet');
         if (color == 'white') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
             // adds the current muehle to the stones
-            boardarray[5].stone.muehle = 14;
-            boardarray[13].stone.muehle = 14;
-            boardarray[20].stone.muehle = 14;
+            boardarray[5].stone.muehle[14] = true;
+            boardarray[13].stone.muehle[14] = true;
+            boardarray[20].stone.muehle[14] = true;
             killblack = true;
         };
 
         if (color == 'black') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
             // adds the current muehle to the stones
-            boardarray[5].stone.muehle = 14;
-            boardarray[13].stone.muehle = 14;
-            boardarray[20].stone.muehle = 14;
+            boardarray[5].stone.muehle[14] = true;
+            boardarray[13].stone.muehle[14] = true;
+            boardarray[20].stone.muehle[14] = true;
             killwhite = true;
         };
     }
-    else {
-        boardarray[5].stone.muehle = 'no';
-        boardarray[13].stone.muehle = 'no';
-        boardarray[20].stone.muehle = 'no';
+    else if (boardarray[5].stone.muehle != undefined && boardarray[13].stone.muehle != undefined && boardarray[20].stone.muehle != undefined) {
+        boardarray[5].stone.muehle[14] = false;
+        boardarray[13].stone.muehle[14] = false;
+        boardarray[20].stone.muehle[14] = false;
     };
 
     // horizontal 2-14-23
     // muehle 15
-    if (boardarray[2].stone.color == color && boardarray[13].stone.color == color && boardarray[23].stone.color == color && boardarray[2].stone.muehle != 15) {
+    if (boardarray[2].stone.color == color && boardarray[13].stone.color == color && boardarray[23].stone.color == color && boardarray[2].stone.muehle[15] != true) {
         console.log('mühle detectet');
         if (color == 'white') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
             // adds the current muehle to the stones
-            boardarray[2].stone.muehle = 15;
-            boardarray[14].stone.muehle = 15;
-            boardarray[23].stone.muehle = 15;
+            boardarray[2].stone.muehle[15] = true;
+            boardarray[14].stone.muehle[15] = true;
+            boardarray[23].stone.muehle[15] = true;
             killblack = true;
         };
 
         if (color == 'black') {
             document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
             // adds the current muehle to the stones
-            boardarray[2].stone.muehle = 15;
-            boardarray[14].stone.muehle = 15;
-            boardarray[23].stone.muehle = 15;
+            boardarray[2].stone.muehle[15] = true;
+            boardarray[14].stone.muehle[15] = true;
+            boardarray[23].stone.muehle[15] = true;
             killwhite = true;
         };
     }
-    else {
-        boardarray[2].stone.muehle = 'no';
-        boardarray[14].stone.muehle = 'no';
-        boardarray[23].stone.muehle = 'no';
+    else if (boardarray[2].stone.muehle != undefined && boardarray[14].stone.muehle != undefined && boardarray[23].stone.muehle != undefined) {
+        boardarray[2].stone.muehle[15] = false;
+        boardarray[14].stone.muehle[15] = false;
+        boardarray[23].stone.muehle[15] = false;
     };
 };
