@@ -163,6 +163,7 @@
     justify-content: center;
     align-items: center;
     margin: 10px;
+    font-family: 'Roboto Slab', serif;
 }
 
 .phase {
@@ -171,4 +172,5 @@
   align-items: center;
   margin: 10px;
   margin-top: 180px;
+  font-family: 'Roboto Slab', serif;
 }
