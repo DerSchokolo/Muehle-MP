@@ -65,7 +65,7 @@ function muehleevent() {
     };
 };
 
-// allows the movement of stones
+// checks if the movement of stones is correct
 function move(oldfield, newfield) {
 
     if (oldfield == 0){

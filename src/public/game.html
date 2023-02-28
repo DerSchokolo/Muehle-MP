@@ -54,17 +54,18 @@
 
             // checks for right color and if field is empty
             if (Drop==true && boardarray[newDiv.id].stone=='empty') {
+                console.log(oldfieldwhite);
+                console.log(newDiv.id);
+                console.log(oldfieldblack);
+                console.log(newDiv.id);
                 // whites turn
                 if ((whitemove == true && stoneshelf[stoneid] != 'empty') || (gamephase == 'zugphase' && move(Number(oldfieldwhite), Number(newDiv.id)))) {
-                    console.log(oldfieldwhite);
-                    console.log(newDiv.id);
                     ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
                     boardarray[newDiv.id].stone = stoneshelf[stoneid];
                     boardarray[newDiv.id].stone.position = 'board';
                     stoneshelf[stoneid] = 'empty'; 
                     whitemove = false;
                     document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
-                    detectmuehle(boardarray, 'white');
                     phasewatcher();
                     if (gamephase == 'zugphase') {
                         console.log(boardarray[newDiv.id].stone);
@@ -72,27 +73,24 @@
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldwhite)].stone;
                         boardarray[Number(oldfieldwhite)].stone = 'empty';
                     };
-                    oldfieldwhite = newDiv.id;
+                    detectmuehle(boardarray, 'white');
                     return Drop, whitemove, boardarray;
                 };
 
                 // blacks turn
                 if ((whitemove == false && stoneshelf[stoneid+9] != 'empty') || (gamephase == 'zugphase' && move(Number(oldfieldblack), Number(newDiv.id)))) {
                     ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
-                    console.log(oldfieldblack);
-                    console.log(newDiv.id);
                     boardarray[newDiv.id].stone = stoneshelf[stoneid+9];
                     boardarray[newDiv.id].stone.position = 'board';
                     stoneshelf[stoneid+9] = 'empty'; 
                     whitemove = true;
                     document.getElementById('notification').innerHTML = 'Weiß am Zug!';
-                    detectmuehle(boardarray, 'black');
                     phasewatcher();
                     if (gamephase == 'zugphase') {
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldblack)].stone;
                         boardarray[Number(oldfieldblack)].stone = 'empty';
                     };
-                    oldfieldblack = newDiv.id;
+                    detectmuehle(boardarray, 'black');
                     return Drop, whitemove, boardarray;
                 };
             };
@@ -118,6 +116,7 @@
                 stoneid = newDiv.id;
                 stoneid = stoneid.slice(10);
                 stoneid = Number(stoneid);
+                oldfieldwhite = this.parentElement.id;
             }
 
             else {
@@ -145,6 +144,8 @@
                 stoneid = newDiv.id;
                 stoneid = stoneid.slice(10);
                 stoneid = Number(stoneid);
+                console.log(this.parentElement.id);
+                oldfieldblack = this.parentElement.id;
             }
 
             else {
