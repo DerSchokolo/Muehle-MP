@@ -55,7 +55,7 @@
             // checks for right color and if field is empty
             if (Drop==true && boardarray[newDiv.id].stone=='empty') {
                 // whites turn
-                if (whitemove == true && ((stoneshelf[stoneid] != 'empty') || gamephase == 'zugphase' && move(Number(oldfieldwhite), Number(newDiv.id)))) {
+                if ((whitemove == true && stoneshelf[stoneid] != 'empty') || (gamephase == 'zugphase' && move(Number(oldfieldwhite), Number(newDiv.id)))) {
                     console.log(oldfieldwhite);
                     console.log(newDiv.id);
                     ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
@@ -66,12 +66,18 @@
                     document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
                     detectmuehle(boardarray, 'white');
                     phasewatcher();
+                    if (gamephase == 'zugphase') {
+                        console.log(boardarray[newDiv.id].stone);
+                        console.log(boardarray[Number(oldfieldwhite)].stone);
+                        boardarray[newDiv.id].stone = boardarray[Number(oldfieldwhite)].stone;
+                        boardarray[Number(oldfieldwhite)].stone = 'empty';
+                    };
                     oldfieldwhite = newDiv.id;
                     return Drop, whitemove, boardarray;
                 };
 
                 // blacks turn
-                if (whitemove == false && (stoneshelf[stoneid+9] != 'empty' || gamephase == 'zugphase' && move(Number(oldfieldblack), Number(newDiv.id)))) {
+                if ((whitemove == false && stoneshelf[stoneid+9] != 'empty') || (gamephase == 'zugphase' && move(Number(oldfieldblack), Number(newDiv.id)))) {
                     ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
                     console.log(oldfieldblack);
                     console.log(newDiv.id);
@@ -82,7 +88,10 @@
                     document.getElementById('notification').innerHTML = 'Weiß am Zug!';
                     detectmuehle(boardarray, 'black');
                     phasewatcher();
-                    move(Number(oldfieldblack), Number(newDiv.id));
+                    if (gamephase == 'zugphase') {
+                        boardarray[newDiv.id].stone = boardarray[Number(oldfieldblack)].stone;
+                        boardarray[Number(oldfieldblack)].stone = 'empty';
+                    };
                     oldfieldblack = newDiv.id;
                     return Drop, whitemove, boardarray;
                 };
