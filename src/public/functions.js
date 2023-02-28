@@ -65,6 +65,184 @@ function muehleevent() {
     };
 };
 
+// allows the movement of stones
+function move(oldfield, newfield) {
+
+    if (oldfield == 0){
+        if (newfield == 9 || newfield == 1){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 1){
+        if (newfield == 0 || newfield == 2 || newfield == 4){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 2){
+        if (newfield == 1 || newfield == 14){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 3){
+        if (newfield == 10 || newfield == 4){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 4){
+        if (newfield == 1 || newfield == 3 || newfield == 5 || newfield == 7){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 5){
+        if (newfield == 4 || newfield == 13){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 6){
+        if (newfield == 7 && newfield == 11){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 7){
+        if (newfield == 4 || newfield == 6 || newfield == 8){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 8){
+        if (newfield == 7 || newfield == 12){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 9){
+        if (newfield == 0 || newfield == 10 || newfield == 21){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 10){
+        if (newfield == 3 || newfield == 9 || newfield == 11 || newfield == 18){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 11){
+        if (newfield == 6 || newfield == 10 || newfield == 15){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 12){
+        if (newfield == 8 || newfield == 13 || newfield == 17){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 13){
+        if (newfield == 5 || newfield == 12 || newfield == 14 || newfield == 20){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 14){
+        if (newfield == 2 || newfield == 13 || newfield == 23){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 15){
+        if (newfield == 11 || newfield == 16){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 16){
+        if (newfield == 15 || newfield == 17 || newfield == 19){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 17){
+        if (newfield == 12 || newfield == 16){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 18){
+        if (newfield == 10 || newfield == 19){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 19){
+        if (newfield == 16 || newfield == 18 || newfield == 20 || newfield == 22){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 20){
+        if (newfield == 13 || newfield == 19){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 21){
+        if (newfield == 9 || newfield == 22){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 22){
+        if (newfield == 19 || newfield == 21 || newfield == 23){
+            console.log('true');
+            return true;
+        }
+    }
+
+    if (oldfield == 23){
+        if (newfield == 14 || newfield == 22){
+            console.log('true');
+            return true;
+        }
+    }
+ 
+
+    else {
+        console.log('false');
+        return false;
+    };
+};
+
 // checks if the building phase of the game has finished
 function phasewatcher() {
     let counter = 0; 
@@ -77,6 +255,7 @@ function phasewatcher() {
     
     if (counter == 18) {
         document.getElementById('phase').innerHTML = "Zugphase";
+        gamephase = 'zugphase'
     };
 };
 

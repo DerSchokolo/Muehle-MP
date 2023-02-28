@@ -34,10 +34,8 @@
 
     <script>
         var socket = io();
-        socket.on('connectToRoom',function(data){
-           document.body.innerHTML = '';
-           document.write(data);
-        });
+
+        socket.emit('chat message', boardarray);
      </script>
 
 </body>
