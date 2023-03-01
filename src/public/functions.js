@@ -21,6 +21,13 @@ for (i=0; i<24; i++) {
 ////////////////////////////////////
 
 // toggles the muehle event
+// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
+// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
+// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
+// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
+// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
+// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
+// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
 function muehleevent() {
     var element = document.getElementById(this.id);
     // gets the color of the stone to check that you dont destroy your own colored stone
