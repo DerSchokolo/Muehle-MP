@@ -15,6 +15,12 @@ app.get('/game', (req, res) => {
     res.sendFile(__dirname + '/game.html');
 });
 
+// serves lobby html with id of the room
+app.get('/lobby:id', (req, res) => {
+    console.log(req.params.id);
+    res.sendFile(__dirname + '/lobby.html');
+});
+
 // serves all files in the public folder
 app.use(express.static('public'));
 

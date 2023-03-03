@@ -20,23 +20,13 @@
     <div class="Header">Better Mühle</div>
 
     <div class="gameframealign">
-        <div>
-            <a href="/game">Singleplayer</a>
-        </div>
-
-        <div>
-            <input type="text" id="name"></input>
-            <button onclick="multiplayer()">Multiplayer</button>
-        </div>
+        <div>Dein Gamecode: </div> 
     </div>
 
     <div class="Footer">© Frederik Franzen</div>
 
     <script>
-        function multiplayer(){
-            var name = document.getElementById('name').innerHTML;
-            console.log(name);
-        }
+        var socket = io();
      </script>
 
 </body>
