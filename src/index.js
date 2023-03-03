@@ -10,6 +10,11 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
+// serves game html
+app.get('/game', (req, res) => {
+    res.sendFile(__dirname + '/game.html');
+});
+
 // serves all files in the public folder
 app.use(express.static('public'));
 
