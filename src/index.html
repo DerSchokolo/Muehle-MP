@@ -27,6 +27,8 @@
         <div>
             <input type="text" id="name"></input>
             <button onclick="multiplayer()">Multiplayer</button>
+            <div id="showname"></div>
+            <button id="multiplayerbutton">Multiplayer</button>
         </div>
     </div>
 
@@ -34,9 +36,12 @@
 
     <script>
         function multiplayer(){
-            var name = document.getElementById('name').innerHTML;
+            var name = document.getElementById('name').value;
             console.log(name);
-        }
+            if (name.length > 3) {
+                document.getElementById('showname').innerHTML = name;
+            };
+        };
      </script>
 
 </body>
