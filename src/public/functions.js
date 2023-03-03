@@ -21,20 +21,21 @@ for (i=0; i<24; i++) {
 ////////////////////////////////////
 
 // toggles the muehle event
-// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
-// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
-// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
-// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
-// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
-// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
-// Hinzufügen das geschlossene mühlen nicht zerstört werden dürfen
 function muehleevent() {
     var element = document.getElementById(this.id);
     // gets the color of the stone to check that you dont destroy your own colored stone
     var stonecolor = (element.childNodes[0].id).slice(0,10);
+    // checks if stone is in a muehle and therefor cant be destroyed
+    var muehlestatus = boardarray[element.id].stone.muehle;
+    for (i=0; i<16; i++) {
+        if (muehlestatus[i] == true){
+            muehlestatus = true;
+        };
+    };
+    console.log(muehlestatus);
 
     //  kill white stone
-    if (killwhite && stonecolor == 'whitestone') {
+    if (killwhite && stonecolor == 'whitestone' && muehlestatus != true) {
         element.removeChild(element.firstChild);
         killwhite = false;
         //delets the muehle status from all stones in the muehle of the deletet stone
@@ -53,7 +54,7 @@ function muehleevent() {
     };
 
     //  kill black stone
-    if (killblack && stonecolor == 'blackstone') {
+    if (killblack && stonecolor == 'blackstone' && muehlestatus != true) {
         element.removeChild(element.firstChild);
         killblack = false;
         //delets the muehle status from all stones in the muehle of the deletet stone
