@@ -40,6 +40,10 @@
             console.log(name);
             if (name.length > 3) {
                 document.getElementById('showname').innerHTML = name;
+                let elementMain = document.getElementById("body");
+                let box = document.createElement("a");
+                box.href = "/lobby:" + name;
+                elementMain.appendChild('body');
             };
         };
      </script>
