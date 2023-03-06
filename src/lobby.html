@@ -20,12 +20,14 @@
     <div class="Header">Better Mühle</div>
 
     <div class="gameframealign">
-        <div>Dein Gamecode: </div> 
+        <div id="gamecode">Dein Gamecode: </div> 
     </div>
 
     <div class="Footer">© Frederik Franzen</div>
 
     <script>
+        adress = document.location.pathname;
+        document.getElementById('gamecode').innerHTML = 'Dein Gamecode: ' + adress
         var socket = io();
      </script>
 
