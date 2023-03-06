@@ -22,27 +22,9 @@
     <div class="gameframealign">
         <div>
             <a href="/game">Singleplayer</a>
-        </div>
-
-        <div id="box">
-            <input type="text" id="name"></input>
-            <button onclick="multiplayer()">Multiplayer</button>
-            <div id="showname"></div>
-        </div>
+            <a href="/multiplayergame">Multiplayer</a>
     </div>
 
     <div class="Footer">© Frederik Franzen</div>
-
-    <script>
-        var socket = io();
-
-        function multiplayer(){
-            var name = document.getElementById('name').value;
-            console.log(name);
-            socket.emit("roomnumber", name);
-            document.getElementById('showname').innerHTML = 'Du bist nun in Raum: ' + name;
-        };
-     </script>
-
 </body>
 </html>

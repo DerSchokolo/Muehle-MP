@@ -23,20 +23,17 @@ app.get('/game', (req, res) => {
     res.sendFile(__dirname + '/game.html');
 });
 
+// serves multiplayergame html
+app.get('/multiplayergame', (req, res) => {
+    res.sendFile(__dirname + '/multiplayergame.html');
+});
+
 io.on("connection", (socket) => {
-    socket.on("roomnumber", (arg) => {
-        socket.join(arg);
-        console.log(arg); // world
-        console.log(socket);
+    socket.on("roomnumber", (roomnumber) => {
+        socket.join(roomnumber);
+        console.log(roomnumber);
     });
   });
-
-
-// serves lobby html with id of the room
-app.get('/lobby:id', (req, res) => {
-    console.log(req.params.id);
-    res.sendFile(__dirname + '/lobby.html');
-});
 
 // serves all files in the public folder
 app.use(express.static('public'));
