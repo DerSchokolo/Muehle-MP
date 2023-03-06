@@ -24,7 +24,7 @@
             <a href="/game">Singleplayer</a>
         </div>
 
-        <div>
+        <div id="box">
             <input type="text" id="name"></input>
             <button onclick="multiplayer()">Multiplayer</button>
             <div id="showname"></div>
@@ -39,11 +39,12 @@
             var name = document.getElementById('name').value;
             console.log(name);
             if (name.length > 3) {
-                document.getElementById('showname').innerHTML = name;
-                let elementMain = document.getElementById("body");
-                let box = document.createElement("a");
-                box.href = "/lobby:" + name;
-                elementMain.appendChild('body');
+                let newDiv = document.createElement("a");
+                newDiv.id = 'test';
+                newDiv.classList.add('test');
+                newDiv.innerHTML = "black";
+                newDiv.href = '/lobby' + name;
+                document.getElementById('box').appendChild(newDiv);
             };
         };
      </script>

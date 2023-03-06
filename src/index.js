@@ -29,14 +29,6 @@ io.on('connection', (socket) => {
     console.log('a user connected');
 });
 
-io.on('connection', (socket) => {
-    socket.on('chat message', (msg) => {
-      console.log('message: ' + msg);
-
-      console.log(msg[1])
-    });
-});
-
 // starts server on port 3000
 server.listen(3000, () => {
     console.log('listening on *:3000');
