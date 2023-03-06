@@ -27,8 +27,13 @@
 
     <script>
         adress = document.location.pathname;
-        document.getElementById('gamecode').innerHTML = 'Dein Gamecode: ' + adress
+        document.getElementById('gamecode').innerHTML = 'Dein Gamecode: ' + adress;
+
         var socket = io();
+        socket.on('connectToRoom',function(data){
+            document.body.innerHTML = '';
+            document.write(data);
+        });
      </script>
 
 </body>
