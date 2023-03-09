@@ -42,7 +42,7 @@
         newDiv.id = (i-1);
         newDiv.classList.add("field" + i);
         newDiv.addEventListener("click", muehleevent);
-        //newDiv.innerHTML = i-1; //Text for debuging
+        // newDiv.innerHTML = i-1; //Text for debuging
         newDiv.addEventListener("dragover", function (ereignis) {
             ereignis.preventDefault();
             ereignis.dataTransfer.dropEffect = "move";
@@ -58,6 +58,7 @@
                 console.log(newDiv.id);
                 console.log(oldfieldblack);
                 console.log(newDiv.id);
+                console.log(boardarray);
                 // whites turn
                 if ((whitemove == true && stoneshelf[stoneid] != 'empty') || (gamephase == 'zugphase' && move(Number(oldfieldwhite), Number(newDiv.id)))) {
                     ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
@@ -67,13 +68,17 @@
                     whitemove = false;
                     document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
                     phasewatcher();
+                    // moves the stone in the boardarry array
                     if (gamephase == 'zugphase') {
                         console.log(boardarray[newDiv.id].stone);
                         console.log(boardarray[Number(oldfieldwhite)].stone);
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldwhite)].stone;
                         boardarray[Number(oldfieldwhite)].stone = 'empty';
                     };
+                    // removes any muehle from the stone to then instantly reapply when in a new muehle
+                    boardarray[newDiv.id].stone.muehle = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
                     detectmuehle(boardarray, 'white');
+
                     return Drop, whitemove, boardarray;
                 };
 
@@ -86,11 +91,15 @@
                     whitemove = true;
                     document.getElementById('notification').innerHTML = 'Weiß am Zug!';
                     phasewatcher();
+                    // moves the stone in the boardarry array
                     if (gamephase == 'zugphase') {
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldblack)].stone;
                         boardarray[Number(oldfieldblack)].stone = 'empty';
                     };
+                    // removes any muehle from the stone to then instantly reapply when in a new muehle
+                    boardarray[newDiv.id].stone.muehle = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
                     detectmuehle(boardarray, 'black');
+
                     return Drop, whitemove, boardarray;
                 };
             };
