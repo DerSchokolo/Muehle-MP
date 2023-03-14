@@ -6,7 +6,7 @@ let killwhite = false;
 let killblack = false;
 
 // main game phase index
-// 'setzphase', 'zugphase', 'springphase'
+// 'setzphase', 'zugphase', 'blackjump', 'whitejump'
 let gamephase = "setzphase";
 
 // creates var vor every fieled on the board
@@ -229,7 +229,29 @@ function move(oldfield, newfield) {
     };
 };
 
+// when a stone gets moved out of a muehle every other stone in the muehle gets the muehle from his muehlearray removed (the muehle can now be attact)
+// input:   boardarray for data
+//          fieldid: the id of the field of the moved stone
+// output:  removes the muehle from every detected stone in the muehlearray
+function deletmuehle(boardarray, fieldid) {
+    console.log('------------------');
+    console.log('hey');
+    console.log(fieldid);
+    //delets the muehle status from all stones in the muehle of the deletet stone
+    for (i=0; i<16; i++) {
+        if (boardarray[fieldid].stone.muehle[i] == true) {
+            console.log('muehle to delet: '+ i);
+            for (j=0; j<24; j++) {
+                if (boardarray[j].stone.muehle != undefined) {
+                    boardarray[j].stone.muehle[i] = false;
+                };
+            };
+        };
+    };
+};
+
 // checks if the building phase of the game has finished
+// checks if the zug phase of the game has finished 
 function phasewatcher() {
     let counter = 0; 
 
@@ -243,14 +265,42 @@ function phasewatcher() {
         document.getElementById('phase').innerHTML = "Zugphase";
         gamephase = 'zugphase'
     };
+
+    //springphase
+
+    // check black stones
+    let counterwhite = 0;
+    for (i=0; i<24; i++) {
+        if (boardarray[i].stone.color == 'white') {
+            counterwhite++;
+        }; 
+    };
+
+    if (counterwhite < 4 && gamephase != 'setzphase') {
+        document.getElementById('phase').innerHTML = "Springphase für Weiß";
+        gamephase = 'whitejump'
+    };
+
+    // check black stones
+    let counterblack = 0;
+    for (i=0; i<24; i++) {
+        if (boardarray[i].stone.color == 'black') {
+            counterblack++;
+        }; 
+    };
+
+    if (counterblack < 4 && gamephase != 'setzphase') {
+        document.getElementById('phase').innerHTML = "Springphase für Schwarz";
+        gamephase = 'blackjump'
+    };
 };
 
 
 // checks if muehle was detectet
-
+//
 // inputs   'color' of the stone
 //          'boardarray' gets position of all stones
-
+//
 // returns  'white' for white muehle 
 //          'black' for black muehle
 //          'nomuehle' for no detectet muehle
