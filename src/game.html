@@ -62,7 +62,7 @@
                 console.log('------------------');
                 console.log(this.id);
                 // whites turn
-                if ((whitemove == true && stoneshelf[stoneid] != 'empty') || (gamephase == 'zugphase' && move(Number(oldfieldwhite), Number(newDiv.id))) || (gamephase == 'whitejump')) {
+                if ((whitemove == true) && ((stoneshelf[stoneid] != 'empty') || ((gamephase == 'zugphase' || gamephase == 'blackjump') && move(Number(oldfieldwhite), Number(newDiv.id))) || (gamephase == 'whitejump'))) {
                     //moves the div
                     ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
 
@@ -88,7 +88,7 @@
                 };
 
                 // blacks turn
-                if ((whitemove == false && stoneshelf[stoneid+9] != 'empty') || (gamephase == 'zugphase' && move(Number(oldfieldblack), Number(newDiv.id))) || (gamephase == 'blackjump')) {
+                if ((whitemove == false) && ((stoneshelf[stoneid+9] != 'empty') || ((gamephase == 'zugphase' || gamephase == 'whitejump') && move(Number(oldfieldblack), Number(newDiv.id))) || (gamephase == 'blackjump'))) {
                     //moved the div
                     ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
 
