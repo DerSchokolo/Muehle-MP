@@ -32,7 +32,6 @@ function muehleevent() {
             muehlestatus = true;
         };
     };
-    console.log(muehlestatus);
 
     //  kill white stone
     if (killwhite && stonecolor == 'whitestone' && muehlestatus != true) {
@@ -49,6 +48,9 @@ function muehleevent() {
         boardarray[this.id].stone = 'empty';
         document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
     };
+
+    // changes to the jumpphase directly after stone gets removed
+    phasewatcher();
 };
 
 // checks if the movement of stones is correct
