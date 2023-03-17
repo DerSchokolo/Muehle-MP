@@ -295,6 +295,37 @@ function phasewatcher() {
         document.getElementById('phase').innerHTML = "Springphase für Schwarz";
         gamephase = 'blackjump'
     };
+
+
+    //win condition
+
+    // win for black
+    // check white stones for less than 3
+    let winblack = 0;
+    for (i=0; i<24; i++) {
+        if (boardarray[i].stone.color == 'white') {
+            winblack++;
+        }; 
+    };
+
+    if (winblack < 3 && gamephase != 'setzphase') {
+        document.getElementById('phase').innerHTML = "Schwarz hat gewonnen";
+        gamephase = 'win';
+    };
+
+    // win for white
+    // check black stones for less than 3
+    let winwhite = 0;
+    for (i=0; i<24; i++) {
+        if (boardarray[i].stone.color == 'black') {
+            winwhite++;
+        }; 
+    };
+
+    if (winwhite < 3 && gamephase != 'setzphase') {
+        document.getElementById('phase').innerHTML = "Weiß hat gewonnen";
+        gamephase = 'win';
+    };
 };
 
 
