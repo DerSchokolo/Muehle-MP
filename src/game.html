@@ -74,7 +74,7 @@
                     document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
                     phasewatcher();
                     // moves the stone in the boardarry array if already on the board
-                    if (gamephase == 'zugphase') {
+                    if (gamephase == 'zugphase' || gamephase == 'blackjump' || gamephase == 'whitejump') {
                         console.log(boardarray[newDiv.id].stone);
                         console.log(boardarray[Number(oldfieldwhite)].stone);
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldwhite)].stone;
@@ -100,7 +100,7 @@
                     document.getElementById('notification').innerHTML = 'Weiß am Zug!';
                     phasewatcher();
                     // moves the stone in the boardarry array if already on the board
-                    if (gamephase == 'zugphase') {
+                    if (gamephase == 'zugphase' || gamephase == 'blackjump' || gamephase == 'whitejump') {
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldblack)].stone;
                         boardarray[Number(oldfieldblack)].stone = 'empty';
                     };
