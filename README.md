@@ -5,7 +5,8 @@
 - 9 Steine je Farbe Weiß, Schwarz
 
 Multiplayer:
-- NoteJS Server
+- NoteJS
+- Express Server
 - Socket.io WebSocket
 
 Mögliche mühlen:
@@ -35,9 +36,10 @@ https://www.youtube.com/watch?v=SE1HXc2V3Xk
 
 ## Objects
 board
-    field       //field of the board
-    stone       //stone which is on the board       
+    field       //field in the board
+    stone       //link to the stone which is on the board       
 
 stone
     color       //color of the stone
     position    //position of the stone
+    muehle      //stone is in muehle
