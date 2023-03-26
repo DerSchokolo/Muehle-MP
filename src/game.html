@@ -7,7 +7,7 @@
     <title>Better Mühle</title>
 
     <!-- Links -->
-    <link rel="icon" type="image/x-icon" href="resources/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="objects.js"></script>
     <script type="text/javascript" src="functions.js"></script>
@@ -38,11 +38,11 @@
 
     // Create game grid
     for (i=1; i<25; i++) {
+        // creation of div grid for fields
         let newDiv = document.createElement("Div");
         newDiv.id = (i-1);
         newDiv.classList.add("field" + i);
         newDiv.addEventListener("click", muehleevent);
-        // newDiv.innerHTML = i-1; //Text for debuging
         newDiv.addEventListener("dragover", function (ereignis) {
             ereignis.preventDefault();
             ereignis.dataTransfer.dropEffect = "move";
