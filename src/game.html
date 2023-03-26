@@ -54,13 +54,6 @@
 
             // checks for right color and if field is empty
             if (Drop==true && boardarray[newDiv.id].stone=='empty') {
-                console.log(oldfieldwhite);
-                console.log(newDiv.id);
-                console.log(oldfieldblack);
-                console.log(newDiv.id);
-                console.log(boardarray);
-                console.log('------------------');
-                console.log(this.id);
                 // whites turn
                 if ((whitemove == true && gamephase != 'win') && ((stoneshelf[stoneid] != 'empty') || ((gamephase == 'zugphase' || gamephase == 'blackjump') && move(Number(oldfieldwhite), Number(newDiv.id))) || (gamephase == 'whitejump'))) {
                     //moves the div
@@ -75,8 +68,6 @@
                     phasewatcher();
                     // moves the stone in the boardarry array if already on the board
                     if (gamephase == 'zugphase' || gamephase == 'blackjump' || gamephase == 'whitejump') {
-                        console.log(boardarray[newDiv.id].stone);
-                        console.log(boardarray[Number(oldfieldwhite)].stone);
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldwhite)].stone;
                         boardarray[Number(oldfieldwhite)].stone = 'empty';
                     };
@@ -161,7 +152,6 @@
                 stoneid = newDiv.id;
                 stoneid = stoneid.slice(10);
                 stoneid = Number(stoneid);
-                console.log(this.parentElement.id);
                 oldfieldblack = this.parentElement.id;
             }
 
