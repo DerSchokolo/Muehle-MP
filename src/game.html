@@ -20,21 +20,32 @@
     <div class="Header">Better Mühle</div>
     <div id="phase" class="phase">Setzphase</div>
     <div class="gameframealign">
+        <div id="player1"></div>
         <div id="tablewhite" class="tablewhite"></div>
+
         <div id="gameframe" class="gameframe"></div>
+
         <div id="tableblack" class="tableblack"></div>
+        <div id="player2"></div>
     </div>
-    <div id="notification" class="notification">Weiß am Zug!</div>
+    <div id="notification" class="notification"></div>
     <div class="Footer">© Frederik Franzen</div>
 
 </body>
 
 <script> 
+    // vars
     let whitemove = true;
     let stoneshelf = [];
     let stoneid;
     let oldfieldwhite;
     let oldfieldblack;
+
+    //playernames
+    document.getElementById("player1").innerHTML = playerone;
+    document.getElementById("player2").innerHTML = playertwo;
+
+    document.getElementById('notification').innerHTML = playerone + " am Zug!";
 
     // Create game grid
     for (i=1; i<25; i++) {
@@ -64,7 +75,7 @@
                     boardarray[newDiv.id].stone.position = 'board';
                     stoneshelf[stoneid] = 'empty'; 
                     whitemove = false;
-                    document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
+                    document.getElementById('notification').innerHTML = playertwo + ' am Zug!';
                     phasewatcher();
                     // moves the stone in the boardarry array if already on the board
                     if (gamephase == 'zugphase' || gamephase == 'blackjump' || gamephase == 'whitejump') {
@@ -88,7 +99,7 @@
                     boardarray[newDiv.id].stone.position = 'board';
                     stoneshelf[stoneid+9] = 'empty'; 
                     whitemove = true;
-                    document.getElementById('notification').innerHTML = 'Weiß am Zug!';
+                    document.getElementById('notification').innerHTML = playerone + ' am Zug!';
                     phasewatcher();
                     // moves the stone in the boardarry array if already on the board
                     if (gamephase == 'zugphase' || gamephase == 'blackjump' || gamephase == 'whitejump') {

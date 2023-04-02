@@ -1,6 +1,8 @@
 /////////////////////////////////////
 // vars
 ////////////////////////////////////
+let playerone = localStorage.getItem("playerone");
+let playertwo = localStorage.getItem("playertwo");
 
 let killwhite = false;
 let killblack = false;
@@ -38,7 +40,7 @@ function muehleevent() {
         element.removeChild(element.firstChild);
         killwhite = false;
         boardarray[this.id].stone = 'empty';
-        document.getElementById('notification').innerHTML = 'Weiß am Zug!';
+        document.getElementById('notification').innerHTML = playerone+ ' am Zug!';
     };
 
     //  kill black stone
@@ -46,7 +48,7 @@ function muehleevent() {
         element.removeChild(element.firstChild);
         killblack = false;
         boardarray[this.id].stone = 'empty';
-        document.getElementById('notification').innerHTML = 'Schwarz am Zug!';
+        document.getElementById('notification').innerHTML = playertwo + ' am Zug!';
     };
 
     // changes to the jumpphase directly after stone gets removed
@@ -250,7 +252,7 @@ function phasewatcher() {
     };
 
     if (counterwhite < 4 && gamephase != 'setzphase') {
-        document.getElementById('phase').innerHTML = "Springphase für Weiß";
+        document.getElementById('phase').innerHTML = "Springphase für " + playerone;
         gamephase = 'whitejump'
     };
 
@@ -263,7 +265,7 @@ function phasewatcher() {
     };
 
     if (counterblack < 4 && gamephase != 'setzphase') {
-        document.getElementById('phase').innerHTML = "Springphase für Schwarz";
+        document.getElementById('phase').innerHTML = "Springphase für " + playertwo;
         gamephase = 'blackjump'
     };
 
@@ -280,7 +282,7 @@ function phasewatcher() {
     };
 
     if (winblack < 3 && gamephase != 'setzphase') {
-        document.getElementById('phase').innerHTML = "Schwarz hat gewonnen";
+        document.getElementById('phase').innerHTML = playertwo + " hat gewonnen";
         gamephase = 'win';
     };
 
@@ -294,7 +296,7 @@ function phasewatcher() {
     };
 
     if (winwhite < 3 && gamephase != 'setzphase') {
-        document.getElementById('phase').innerHTML = "Weiß hat gewonnen";
+        document.getElementById('phase').innerHTML = playerone + " hat gewonnen";
         gamephase = 'win';
     };
 };
@@ -316,7 +318,7 @@ function detectmuehle(boardarray, color) {
     for (j=0; j<8; j++) {
         if ((boardarray[counter].stone.color == color && boardarray[counter+1].stone.color == color && boardarray[counter+2].stone.color == color) && (boardarray[counter].stone.muehle[j] != true || boardarray[counter+1].stone.muehle[j] != true || boardarray[counter+2].stone.muehle[j] != true)) {
             if (color == 'white') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein!';
+                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playertwo;
                 // adds the current muehle to the stones
                 boardarray[counter].stone.muehle[j] = true;
                 boardarray[counter+1].stone.muehle[j] = true;
@@ -325,7 +327,7 @@ function detectmuehle(boardarray, color) {
             };
 
             if (color == 'black') {
-                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+                document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playerone;
                 // adds the current muehle to the stones
                 boardarray[counter].stone.muehle[j] = true;
                 boardarray[counter+1].stone.muehle[j] = true;
@@ -343,7 +345,7 @@ function detectmuehle(boardarray, color) {
     if ((boardarray[0].stone.color == color && boardarray[9].stone.color == color && boardarray[21].stone.color == color) && (boardarray[0].stone.muehle[8] != true || boardarray[9].stone.muehle[8] != true || boardarray[21].stone.muehle[8] != true)) {
         
         if (color == 'white') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playertwo;
             // adds the current muehle to the stones
             boardarray[0].stone.muehle[8] = true;
             boardarray[9].stone.muehle[8] = true;
@@ -352,7 +354,7 @@ function detectmuehle(boardarray, color) {
         };
 
         if (color == 'black') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playerone;
             // adds the current muehle to the stones
             boardarray[0].stone.muehle[8] = true;
             boardarray[9].stone.muehle[8] = true;
@@ -366,7 +368,7 @@ function detectmuehle(boardarray, color) {
     if ((boardarray[3].stone.color == color && boardarray[10].stone.color == color && boardarray[18].stone.color == color) && (boardarray[3].stone.muehle[9] != true || boardarray[10].stone.muehle[9] != true || boardarray[18].stone.muehle[9] != true)) {
         
         if (color == 'white') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playertwo;
             // adds the current muehle to the stones
             boardarray[3].stone.muehle[9] = true;
             boardarray[10].stone.muehle[9] = true;
@@ -375,7 +377,7 @@ function detectmuehle(boardarray, color) {
         };
 
         if (color == 'black') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playerone;
             // adds the current muehle to the stones
             boardarray[3].stone.muehle[9] = true;
             boardarray[10].stone.muehle[9] = true;
@@ -389,7 +391,7 @@ function detectmuehle(boardarray, color) {
     if ((boardarray[6].stone.color == color && boardarray[11].stone.color == color && boardarray[15].stone.color == color) && (boardarray[6].stone.muehle[10] != true || boardarray[11].stone.muehle[10] != true || boardarray[15].stone.muehle[10] != true)) {
         
         if (color == 'white') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playertwo;
             // adds the current muehle to the stones
             boardarray[6].stone.muehle[10] = true;
             boardarray[11].stone.muehle[10] = true;
@@ -398,7 +400,7 @@ function detectmuehle(boardarray, color) {
         };
 
         if (color == 'black') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playerone;
             // adds the current muehle to the stones
             boardarray[6].stone.muehle[10] = true;
             boardarray[11].stone.muehle[10] = true;
@@ -412,7 +414,7 @@ function detectmuehle(boardarray, color) {
     if ((boardarray[1].stone.color == color && boardarray[4].stone.color == color && boardarray[7].stone.color == color) && (boardarray[1].stone.muehle[11] != true || boardarray[4].stone.muehle[11] != true || boardarray[7].stone.muehle[11] != true)) {
         
         if (color == 'white') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playertwo;
             // adds the current muehle to the stones
             boardarray[1].stone.muehle[11] = true;
             boardarray[4].stone.muehle[11] = true;
@@ -421,7 +423,7 @@ function detectmuehle(boardarray, color) {
         };
 
         if (color == 'black') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playerone;
             // adds the current muehle to the stones
             boardarray[1].stone.muehle[11] = true;
             boardarray[4].stone.muehle[11] = true;
@@ -435,7 +437,7 @@ function detectmuehle(boardarray, color) {
     if ((boardarray[16].stone.color == color && boardarray[19].stone.color == color && boardarray[22].stone.color == color) && (boardarray[16].stone.muehle[12] != true || boardarray[19].stone.muehle[12] != true || boardarray[22].stone.muehle[12] != true)) {
         
         if (color == 'white') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playertwo;
             // adds the current muehle to the stones
             boardarray[16].stone.muehle[12] = true;
             boardarray[19].stone.muehle[12] = true;
@@ -444,7 +446,7 @@ function detectmuehle(boardarray, color) {
         };
 
         if (color == 'black') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playerone;
             // adds the current muehle to the stones
             boardarray[16].stone.muehle[12] = true;
             boardarray[19].stone.muehle[12] = true;
@@ -459,7 +461,7 @@ function detectmuehle(boardarray, color) {
     if ((boardarray[8].stone.color == color && boardarray[12].stone.color == color && boardarray[17].stone.color == color) && (boardarray[8].stone.muehle[13] != true || boardarray[12].stone.muehle[13] != true || boardarray[17].stone.muehle[13] != true)) {
         
         if (color == 'white') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playertwo;
             // adds the current muehle to the stones
             boardarray[8].stone.muehle[13] = true;
             boardarray[12].stone.muehle[13] = true;
@@ -468,7 +470,7 @@ function detectmuehle(boardarray, color) {
         };
 
         if (color == 'black') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playerone;
             // adds the current muehle to the stones
             boardarray[8].stone.muehle[13] = true;
             boardarray[12].stone.muehle[13] = true;
@@ -483,7 +485,7 @@ function detectmuehle(boardarray, color) {
     if ((boardarray[5].stone.color == color && boardarray[13].stone.color == color && boardarray[20].stone.color == color) && (boardarray[5].stone.muehle[14] != true || boardarray[13].stone.muehle[14] != true || boardarray[20].stone.muehle[14] != true)) {
         
         if (color == 'white') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playertwo;
             // adds the current muehle to the stones
             boardarray[5].stone.muehle[14] = true;
             boardarray[13].stone.muehle[14] = true;
@@ -492,7 +494,7 @@ function detectmuehle(boardarray, color) {
         };
 
         if (color == 'black') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playerone;
             // adds the current muehle to the stones
             boardarray[5].stone.muehle[14] = true;
             boardarray[13].stone.muehle[14] = true;
@@ -507,7 +509,7 @@ function detectmuehle(boardarray, color) {
     if ((boardarray[2].stone.color == color && boardarray[14].stone.color == color && boardarray[23].stone.color == color) && (boardarray[2].stone.muehle[15] != true || boardarray[14].stone.muehle[15] != true || boardarray[23].stone.muehle[15] != true)) {
         
         if (color == 'white') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen schwarzen Stein';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playertwo;
             // adds the current muehle to the stones
             boardarray[2].stone.muehle[15] = true;
             boardarray[14].stone.muehle[15] = true;
@@ -516,7 +518,7 @@ function detectmuehle(boardarray, color) {
         };
 
         if (color == 'black') {
-            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen weißen Stein!';
+            document.getElementById('notification').innerHTML = 'Mühle! Nimm einen Stein von ' + playerone;
             // adds the current muehle to the stones
             boardarray[2].stone.muehle[15] = true;
             boardarray[14].stone.muehle[15] = true;

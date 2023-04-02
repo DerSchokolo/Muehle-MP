@@ -3,28 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"">
     <title>Better Mühle</title>
 
     <!-- Links -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="objects.js"></script>
-    <script type="text/javascript" src="functions.js"></script>
+    <link rel="icon" type="image/x-icon" href="/src/img/favicon.ico">
+    <link rel="stylesheet" href="/src/static/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
-    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
     <div class="Header">Better Mühle</div>
 
     <div class="gameframealign">
         <div>
-            <a href="/game">Singleplayer</a>
-            <a href="/multiplayergame">Multiplayer</a>
+            <div>Spieler 1 weiß: <input type="text" oninput="submitplayername(1)" id="playerinput1"></div>
+            <div>Spieler 2 schwarz: <input type="text" oninput="submitplayername(2)" id="playerinput2" ></div>
+
+            <div> 
+                <div id="player1"></div>    
+                <div>vs</div>     
+                <div id="player2"></div>     
+            </div>
+
+            <a href="/src/game.html" id="gamestart">Spiel starten</a>
     </div>
 
     <div class="Footer">© Frederik Franzen</div>
+
+    <script>
+        document.getElementById('gamestart').style.visibility = 'hidden';
+
+        function submitplayername(playernumber) {
+            document.getElementById('player' + playernumber).innerHTML = document.getElementById('playerinput' + playernumber).value;
+
+            if (playernumber == 1) {
+                playerone = document.getElementById('playerinput' + playernumber).value;
+                localStorage.setItem("playerone", playerone);
+            };
+
+            if (playernumber == 2) {
+                playertwo = document.getElementById('playerinput' + playernumber).value;
+                localStorage.setItem("playertwo", playertwo);
+            };
+
+            if (playerone != undefined && playertwo != undefined) {
+                document.getElementById('gamestart').style.visibility = 'visible';
+            }
+        };
+    </script>
 </body>
 </html>
