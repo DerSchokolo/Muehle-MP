@@ -7,10 +7,10 @@
     <title>Better Mühle</title>
 
     <!-- Links -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="objects.js"></script>
-    <script type="text/javascript" src="functions.js"></script>
+    <link rel="icon" type="image/x-icon" href="/src/img/favicon.ico">
+    <link rel="stylesheet" href="/src/static/style.css">
+    <script type="text/javascript" src="/src/static/objects.js"></script>
+    <script type="text/javascript" src="/src/static/functions.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
@@ -111,7 +111,7 @@
         let newDiv = document.createElement("img");
         newDiv.id = "whitestone" + i;
         newDiv.classList.add("whitestone" + (i+1));
-        newDiv.src = "whitestone.png";
+        newDiv.src = "/src/img/whitestone.png";
         newDiv.innerHTML = "white";
         newDiv.draggable = "true";
         stoneshelf[i] = new stone(newDiv.id, 'white', 'shelf');
@@ -139,7 +139,7 @@
         let newDiv = document.createElement("img");
         newDiv.id = "blackstone" + i;
         newDiv.classList.add("blackstone" + (i+1));
-        newDiv.src = "blackstone.png";
+        newDiv.src = "/src/img/blackstone.png";
         newDiv.innerHTML = "black";
         newDiv.draggable = "true";
         stoneshelf[i+9] = new stone(newDiv.id, 'black', 'shelf');
