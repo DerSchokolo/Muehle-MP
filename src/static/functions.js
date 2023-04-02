@@ -234,8 +234,8 @@ function deletmuehle(boardarray, fieldid) {
 // checks if the zug phase of the game has finished 
 function phasewatcher() {
     let counter = 0; 
-    let addwin = false;
-    let addlose = false;
+    let addedwin = false;
+    let addedlose = false;
 
     for (i=0; i < 18; i++) {
         if (stoneshelf[i] == 'empty') {
@@ -291,32 +291,34 @@ function phasewatcher() {
     if (winblack < 3 && gamephase != 'setzphase') {
         document.getElementById('phase').innerHTML = playertwo + " hat gewonnen";
         gamephase = 'win';
+        document.getElementById('notification').style.visibility = hidden;
 
         // addes win to playerdata
         for (i=0; i < playerdata.length; i++) {
             if (playertwo == playerdata[i].name) {
-                playerdata[i].addwin();
-                addwin = true;
+                playerdata[i].wins++;
+                addedwin = true;
+                console.log('added')
             };
         };
 
-        if (addwin == false){
+        if (addedwin == false){
             winner = new player(playerone);
-            winner.addwin();
+            winner.wins++;
             playerdata.push(winner);
         };
 
         // addes lose to playerdata
         for (i=0; i < playerdata.length; i++) {
             if (playerone == playerdata[i].name) {
-                playerdata[i].addlose();
-                addlose = truep;
+                playerdata[i].loses++;
+                addedlose = true;
             };
         };
 
-        if (addlose == false){
+        if (addedlose == false){
             loser = new player(playertwo);
-            loser.addlose();
+            loser.loses++;
             playerdata.push(loser);
         };
 
@@ -335,21 +337,22 @@ function phasewatcher() {
     if (winwhite < 3 && gamephase != 'setzphase') {
         document.getElementById('phase').innerHTML = playerone + " hat gewonnen";
         gamephase = 'win';
+        document.getElementById('notification').style.visibility = hidden;
 
         console.log('test');
 
         // addes win to playerdata
         for (i=0; i < playerdata.length; i++) {
             if (playerone == playerdata[i].name) {
-                playerdata[i].addwin();
-                addwin = true;
+                playerdata[i].wins++;
+                addedwin = true;
                 console.log(i);
             };
         };
 
-        if (addwin == false){
+        if (addedwin == false){
             winner = new player(playerone);
-            winner.addwin();
+            winner.wins++;
             playerdata.push(winner);
             console.log('push');
         };
@@ -357,14 +360,14 @@ function phasewatcher() {
         // addes lose to playerdata
         for (i=0; i < playerdata.length; i++) {
             if (playertwo == playerdata[i].name) {
-                playerdata[i].addlose();
-                addlose = true;
+                playerdata[i].loses++;
+                addedlose = true;
             };
         };
 
-        if (addlose == false){
+        if (addedlose == false){
             loser = new player(playertwo);
-            loser.addlose();
+            loser.loses++;
             playerdata.push(loser);
         };
 

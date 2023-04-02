@@ -24,4 +24,4 @@ function player(name) {
     this.addlose = function() {
         this.loses++;
     }
-}
+};
