@@ -4,6 +4,11 @@
 let playerone = localStorage.getItem("playerone");
 let playertwo = localStorage.getItem("playertwo");
 
+let playerdata = JSON.parse(localStorage.getItem("playerdata"));
+if (playerdata == null) {
+    playerdata = []
+}
+
 let killwhite = false;
 let killblack = false;
 
@@ -229,6 +234,8 @@ function deletmuehle(boardarray, fieldid) {
 // checks if the zug phase of the game has finished 
 function phasewatcher() {
     let counter = 0; 
+    let addwin = false;
+    let addlose = false;
 
     for (i=0; i < 18; i++) {
         if (stoneshelf[i] == 'empty') {
@@ -284,6 +291,36 @@ function phasewatcher() {
     if (winblack < 3 && gamephase != 'setzphase') {
         document.getElementById('phase').innerHTML = playertwo + " hat gewonnen";
         gamephase = 'win';
+
+        // addes win to playerdata
+        for (i=0; i < playerdata.length; i++) {
+            if (playertwo == playerdata[i]) {
+                playerdata[i].addwin();
+                addwin = true;
+            };
+        };
+
+        if (addwin == false){
+            winner = new player(playerone);
+            winner.addwin();
+            playerdata.push(winner);
+        };
+
+        // addes lose to playerdata
+        for (i=0; i < playerdata.length; i++) {
+            if (playerone == playerdata[i]) {
+                playerdata[i].addlose();
+                addlose = truep;
+            };
+        };
+
+        if (addlose == false){
+            loser = new player(playertwo);
+            loser.addlose();
+            playerdata.push(loser);
+        };
+
+        localStorage.setItem("playerdata", JSON.stringify(playerdata));
     };
 
     // win for white
@@ -298,6 +335,40 @@ function phasewatcher() {
     if (winwhite < 3 && gamephase != 'setzphase') {
         document.getElementById('phase').innerHTML = playerone + " hat gewonnen";
         gamephase = 'win';
+
+        console.log('test');
+
+        // addes win to playerdata
+        for (i=0; i < playerdata.length; i++) {
+            if (playerone == playerdata[i]) {
+                playerdata[i].addwin();
+                addwin = true;
+                console.log(i);
+            };
+        };
+
+        if (addwin == false){
+            winner = new player(playerone);
+            winner.addwin();
+            playerdata.push(winner);
+            console.log('push');
+        };
+
+        // addes lose to playerdata
+        for (i=0; i < playerdata.length; i++) {
+            if (playertwo == playerdata[i]) {
+                playerdata[i].addlose();
+                addlose = true;
+            };
+        };
+
+        if (addlose == false){
+            loser = new player(playertwo);
+            loser.addlose();
+            playerdata.push(loser);
+        };
+
+        localStorage.setItem("playerdata", JSON.stringify(playerdata));
     };
 };
 

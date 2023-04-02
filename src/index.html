@@ -35,6 +35,11 @@
     <script>
         document.getElementById('gamestart').style.visibility = 'hidden';
 
+        let playerdata = JSON.parse(localStorage.getItem("playerdata"));
+        if (playerdata == null) {
+            playerdata = [];
+        };
+
         function submitplayername(playernumber) {
             document.getElementById('player' + playernumber).innerHTML = document.getElementById('playerinput' + playernumber).value;
 
