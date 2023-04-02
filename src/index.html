@@ -27,6 +27,16 @@
                 <div id="player2"></div>     
             </div>
 
+            <div id="Tablediv" class="Tablediv">
+                <table style="border:solid;" id="Table" class="Table">
+                  <tr id="TableHead">
+                      <th>Name</th>
+                      <th>Siege</th>
+                      <th>Niederlagen</th>
+                  </tr>
+                </table>
+              </div>
+
             <a href="/src/game.html" id="gamestart">Spiel starten</a>
     </div>
 
@@ -38,6 +48,26 @@
         let playerdata = JSON.parse(localStorage.getItem("playerdata"));
         if (playerdata == null) {
             playerdata = [];
+        };
+
+        const playertable = document.getElementById("Table");
+
+        for(i=0; i < playerdata.length; i++){
+            let newRow = document.createElement("tr");
+
+            let namecell = document.createElement("td");
+            let wincell = document.createElement("td");
+            let losecell = document.createElement("td");
+
+            namecell.innerHTML = playerdata[i].name;      
+            wincell.innerHTML = playerdata[i].wins;  
+            losecell.innerHTML = playerdata[i].loses;      
+
+            newRow.appendChild(namecell);
+            newRow.appendChild(wincell);
+            newRow.appendChild(losecell);
+
+            playertable.appendChild(newRow);
         };
 
         function submitplayername(playernumber) {

@@ -294,7 +294,7 @@ function phasewatcher() {
 
         // addes win to playerdata
         for (i=0; i < playerdata.length; i++) {
-            if (playertwo == playerdata[i]) {
+            if (playertwo == playerdata[i].name) {
                 playerdata[i].addwin();
                 addwin = true;
             };
@@ -308,7 +308,7 @@ function phasewatcher() {
 
         // addes lose to playerdata
         for (i=0; i < playerdata.length; i++) {
-            if (playerone == playerdata[i]) {
+            if (playerone == playerdata[i].name) {
                 playerdata[i].addlose();
                 addlose = truep;
             };
@@ -340,7 +340,7 @@ function phasewatcher() {
 
         // addes win to playerdata
         for (i=0; i < playerdata.length; i++) {
-            if (playerone == playerdata[i]) {
+            if (playerone == playerdata[i].name) {
                 playerdata[i].addwin();
                 addwin = true;
                 console.log(i);
@@ -356,7 +356,7 @@ function phasewatcher() {
 
         // addes lose to playerdata
         for (i=0; i < playerdata.length; i++) {
-            if (playertwo == playerdata[i]) {
+            if (playertwo == playerdata[i].name) {
                 playerdata[i].addlose();
                 addlose = true;
             };
