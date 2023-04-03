@@ -66,7 +66,7 @@
             // checks for right color and if field is empty
             if (Drop==true && boardarray[newDiv.id].stone=='empty') {
                 // whites turn
-                if ((whitemove == true && gamephase != 'win') && ((stoneshelf[stoneid] != 'empty') || ((gamephase == 'zugphase' || gamephase == 'blackjump') && move(Number(oldfieldwhite), Number(newDiv.id))) || (gamephase == 'whitejump'))) {
+                if (((whitemove == true && gamephase != 'win') && ((stoneshelf[stoneid] != 'empty') || ((gamephase == 'zugphase' || gamephase == 'blackjump') && move(Number(oldfieldwhite), Number(newDiv.id))) || (gamephase == 'whitejump'))) && killwhite != true) {
                     //moves the div
                     ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
 
@@ -76,7 +76,6 @@
                     stoneshelf[stoneid] = 'empty'; 
                     whitemove = false;
                     document.getElementById('notification').innerHTML = playertwo + ' am Zug!';
-                    phasewatcher();
                     // moves the stone in the boardarry array if already on the board
                     if (gamephase == 'zugphase' || gamephase == 'blackjump' || gamephase == 'whitejump') {
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldwhite)].stone;
@@ -86,11 +85,13 @@
                     deletmuehle(boardarray, this.id);
                     detectmuehle(boardarray, 'white');
 
+                    phasewatcher();
+
                     return Drop, whitemove, boardarray;
                 };
 
                 // blacks turn
-                if ((whitemove == false && gamephase != 'win') && ((stoneshelf[stoneid+9] != 'empty') || ((gamephase == 'zugphase' || gamephase == 'whitejump') && move(Number(oldfieldblack), Number(newDiv.id))) || (gamephase == 'blackjump'))) {
+                if (((whitemove == false && gamephase != 'win') && ((stoneshelf[stoneid+9] != 'empty') || ((gamephase == 'zugphase' || gamephase == 'whitejump') && move(Number(oldfieldblack), Number(newDiv.id))) || (gamephase == 'blackjump'))) && killblack != true) {
                     //moved the div
                     ereignis.target.appendChild(document.getElementById(ereignis.dataTransfer.getData("text/plain")));
 
@@ -100,7 +101,6 @@
                     stoneshelf[stoneid+9] = 'empty'; 
                     whitemove = true;
                     document.getElementById('notification').innerHTML = playerone + ' am Zug!';
-                    phasewatcher();
                     // moves the stone in the boardarry array if already on the board
                     if (gamephase == 'zugphase' || gamephase == 'blackjump' || gamephase == 'whitejump') {
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldblack)].stone;
@@ -109,6 +109,8 @@
                     // removes any muehle from the stone to then instantly reapply when in a new muehle
                     deletmuehle(boardarray, this.id);
                     detectmuehle(boardarray, 'black');
+
+                    phasewatcher();
 
                     return Drop, whitemove, boardarray;
                 };
