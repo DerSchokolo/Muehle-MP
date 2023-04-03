@@ -42,6 +42,38 @@ function muehleevent() {
         };
     };
 
+
+    // detection for the case that some player has only stones in muehlen on the board, in this case the opposite player can destroy a stone in a muehle
+    
+    // counts how many stones are in a muehle
+    let countermuehlestones = 0;
+    for (i=0; i < 24; i++) {
+        for (j=0; j < 16; j++) {
+            if(boardarray[i].stone != "empty" && (boardarray[i].stone.muehle[j] == true && boardarray[i].stone.color == boardarray[element.id].stone.color)) {
+                countermuehlestones++;
+            };
+        };
+    };
+    console.log(countermuehlestones);
+    
+    // counts how many stones the player has
+    let counterstones = 0;
+    for (i=0; i < 24; i++) {
+        if (boardarray[i].stone.color == boardarray[element.id].stone.color) {
+            counterstones++;
+        };
+    }; 
+    console.log(counterstones);
+
+    // if counters equal -> stone can be removed
+    if (countermuehlestones == counterstones) {
+        muehlestatus = false;
+    };
+
+    console.log(muehlestatus);
+    console.log(killblack);
+    console.log(killwhite);
+
     //  kill white stone
     if (killwhite && stonecolor == 'whitestone' && muehlestatus != true) {
         element.removeChild(element.firstChild);
@@ -52,6 +84,7 @@ function muehleevent() {
 
     //  kill black stone
     if (killblack && stonecolor == 'blackstone' && muehlestatus != true) {
+        console.log('here');
         element.removeChild(element.firstChild);
         killblack = false;
         boardarray[this.id].stone = 'empty';
@@ -252,7 +285,7 @@ function phasewatcher() {
 
     //springphase
 
-    // check black stones
+    // check white stones
     let counterwhite = 0;
     for (i=0; i<24; i++) {
         if (boardarray[i].stone.color == 'white') {
