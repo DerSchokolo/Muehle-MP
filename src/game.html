@@ -81,6 +81,7 @@
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldwhite)].stone;
                         boardarray[Number(oldfieldwhite)].stone = 'empty';
                     };
+
                     // removes any muehle from the stone to then instantly reapply when in a new muehle
                     deletmuehle(boardarray, this.id);
                     detectmuehle(boardarray, 'white');
@@ -106,6 +107,7 @@
                         boardarray[newDiv.id].stone = boardarray[Number(oldfieldblack)].stone;
                         boardarray[Number(oldfieldblack)].stone = 'empty';
                     };
+
                     // removes any muehle from the stone to then instantly reapply when in a new muehle
                     deletmuehle(boardarray, this.id);
                     detectmuehle(boardarray, 'black');
@@ -157,7 +159,7 @@
         newDiv.draggable = "true";
         stoneshelf[i+9] = new stone(newDiv.id, 'black', 'shelf');
 
-                // actions for black stones
+        // actions for black stones
         newDiv.addEventListener("dragstart", function (ereignis) {
             if (whitemove == false) {
                 Drop = true;

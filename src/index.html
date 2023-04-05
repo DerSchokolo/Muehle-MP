@@ -58,6 +58,7 @@
 
         const playertable = document.getElementById("Table");
 
+        // new tablerow for every player
         for(i=0; i < playerdata.length; i++){
             let newRow = document.createElement("tr");
 
@@ -76,6 +77,7 @@
             playertable.appendChild(newRow);
         };
 
+        // saves playernames to storage 
         function submitplayername(playernumber) {
             document.getElementById('player' + playernumber).innerHTML = document.getElementById('playerinput' + playernumber).value;
 

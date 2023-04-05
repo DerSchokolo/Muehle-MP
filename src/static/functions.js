@@ -1,6 +1,7 @@
 /////////////////////////////////////
 // vars
 ////////////////////////////////////
+
 let playerone = localStorage.getItem("playerone");
 let playertwo = localStorage.getItem("playertwo");
 
@@ -16,7 +17,7 @@ let killblack = false;
 // 'setzphase', 'zugphase', 'blackjump', 'whitejump'
 let gamephase = "setzphase";
 
-// creates var vor every fieled on the board
+// creates element vor every fieled on the board
 let boardarray = [];
 for (i=0; i<24; i++) {
     boardarray[i] = new board(i, 'empty');
