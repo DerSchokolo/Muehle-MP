@@ -10,6 +10,11 @@ function stone(name, color, position) {
     this.color = color;
     this.position = position;
     this.muehle = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
+
+    this.move = function(oldposition, newposition) {
+        oldposition = "empty";
+        newposition = oldposition;
+    };
 };
 
 function player(name) {
