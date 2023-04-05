@@ -29,7 +29,6 @@ for (i=0; i<24; i++) {
 
 // toggles the muehle event
 function muehleevent() {
-    console.log('Drop false')
 
     var element = document.getElementById(this.id);
     // gets the color of the stone to check that you dont destroy your own colored stone
@@ -54,7 +53,6 @@ function muehleevent() {
             };
         };
     };
-    console.log(countermuehlestones);
     
     // counts how many stones the player has
     let counterstones = 0;
@@ -63,16 +61,11 @@ function muehleevent() {
             counterstones++;
         };
     }; 
-    console.log(counterstones);
 
     // if counters equal -> stone can be removed
     if (countermuehlestones == counterstones) {
         muehlestatus = false;
     };
-
-    console.log(muehlestatus);
-    console.log(killblack);
-    console.log(killwhite);
 
     //  kill white stone
     if (killwhite && stonecolor == 'whitestone' && muehlestatus != true) {
@@ -84,7 +77,6 @@ function muehleevent() {
 
     //  kill black stone
     if (killblack && stonecolor == 'blackstone' && muehlestatus != true) {
-        console.log('here');
         element.removeChild(element.firstChild);
         killblack = false;
         boardarray[this.id].stone = 'empty';
@@ -333,7 +325,6 @@ function phasewatcher() {
             if (playertwo == playerdata[i].name) {
                 playerdata[i].wins++;
                 addedwin = true;
-                console.log('added')
             };
         };
 
@@ -374,14 +365,11 @@ function phasewatcher() {
         gamephase = 'win';
         document.getElementById('notification').style.visibility = hidden;
 
-        console.log('test');
-
         // addes win to playerdata
         for (i=0; i < playerdata.length; i++) {
             if (playerone == playerdata[i].name) {
                 playerdata[i].wins++;
                 addedwin = true;
-                console.log(i);
             };
         };
 
@@ -389,7 +377,6 @@ function phasewatcher() {
             winner = new player(playerone);
             winner.wins++;
             playerdata.push(winner);
-            console.log('push');
         };
 
         // addes lose to playerdata

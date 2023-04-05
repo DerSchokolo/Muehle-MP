@@ -7,8 +7,8 @@
     <title>Better Mühle</title>
 
     <!-- Links -->
-    <link rel="icon" type="image/x-icon" href="/src/img/favicon.ico">
-    <link rel="stylesheet" href="/src/static/style.css">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
@@ -16,28 +16,34 @@
 <body>
     <div class="Header">Better Mühle</div>
 
-    <div class="gameframealign">
-        <div>
-            <div>Spieler 1 weiß: <input type="text" oninput="submitplayername(1)" id="playerinput1"></div>
-            <div>Spieler 2 schwarz: <input type="text" oninput="submitplayername(2)" id="playerinput2" ></div>
+    <div class="indexcontainer">
+        <div class="input">
+            <div>Spieler 1 weiß: <input type="text" oninput="submitplayername(1)" id="playerinput1" style="margin-left: 40px;"></div>
+            <div>Spieler 2 schwarz: <input type="text" oninput="submitplayername(2)" id="playerinput2" style="margin-left: 8px;"></div>
+        </div>
 
-            <div> 
-                <div id="player1"></div>    
+        <div class="startgamewrapper">
+            <div class="startgame">
+                <div id="player1">weiß</div>    
                 <div>vs</div>     
-                <div id="player2"></div>     
+                <div id="player2">schwarz</div>  
             </div>
+        </div>
 
-            <div id="Tablediv" class="Tablediv">
-                <table style="border:solid;" id="Table" class="Table">
-                  <tr id="TableHead">
-                      <th>Name</th>
-                      <th>Siege</th>
-                      <th>Niederlagen</th>
-                  </tr>
-                </table>
-              </div>
-
-            <a href="/src/game.html" id="gamestart">Spiel starten</a>
+        <div id="Tablediv" class="Tablediv">
+            <table style="border:solid;" id="Table" class="Table">
+                <tr id="TableHead">
+                    <th>Name</th>
+                    <th>Siege</th>
+                    <th>Niederlagen</th>
+                </tr>
+            </table>
+            </div>
+      </div>
+    <div>
+    
+    <div class="startgamebuttonwrapper">
+        <a href="game.html" id="gamestart" class="startgamebutton">Spiel starten</a>
     </div>
 
     <div class="Footer">© Frederik Franzen</div>
