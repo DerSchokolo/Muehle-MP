@@ -1,4 +1,4 @@
-// constructur for boardfields object
+// constructur for board object
 function board(field, stone) {
     this.field = field;
     this.stone = stone;
@@ -10,13 +10,9 @@ function stone(name, color, position) {
     this.color = color;
     this.position = position;
     this.muehle = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
-
-    this.move = function(oldposition, newposition) {
-        oldposition = "empty";
-        newposition = oldposition;
-    };
 };
 
+// constructur for player object
 function player(name) {
     this.name = name;
     this.wins = 0;

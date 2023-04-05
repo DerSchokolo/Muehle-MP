@@ -296,3 +296,12 @@ body {
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.player {
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+}
+
+table {
+  border-spacing: 10px 5px;
+}

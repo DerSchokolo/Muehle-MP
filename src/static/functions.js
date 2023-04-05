@@ -318,7 +318,7 @@ function phasewatcher() {
     if (winblack < 3 && gamephase != 'setzphase') {
         document.getElementById('phase').innerHTML = playertwo + " hat gewonnen";
         gamephase = 'win';
-        document.getElementById('notification').style.visibility = hidden;
+        document.getElementById('notification').style.visibility = 'hidden';
 
         // addes win to playerdata
         for (i=0; i < playerdata.length; i++) {
@@ -329,7 +329,7 @@ function phasewatcher() {
         };
 
         if (addedwin == false){
-            winner = new player(playerone);
+            winner = new player(playertwo);
             winner.wins++;
             playerdata.push(winner);
         };
@@ -343,7 +343,7 @@ function phasewatcher() {
         };
 
         if (addedlose == false){
-            loser = new player(playertwo);
+            loser = new player(playerone);
             loser.loses++;
             playerdata.push(loser);
         };
@@ -363,7 +363,7 @@ function phasewatcher() {
     if (winwhite < 3 && gamephase != 'setzphase') {
         document.getElementById('phase').innerHTML = playerone + " hat gewonnen";
         gamephase = 'win';
-        document.getElementById('notification').style.visibility = hidden;
+        document.getElementById('notification').style.visibility = 'hidden';
 
         // addes win to playerdata
         for (i=0; i < playerdata.length; i++) {
