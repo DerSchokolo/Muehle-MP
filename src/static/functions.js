@@ -243,7 +243,6 @@ function move(oldfield, newfield) {
 // when a stone gets moved out of a muehle every other stone in the muehle gets the muehle from his muehlearray removed (the muehle can now be attact)
 // input:   boardarray for data
 //          fieldid: the id of the field of the moved stone
-// output:  removes the muehle from every detected stone in the muehlearray
 function deletmuehle(boardarray, fieldid) {
     //delets the muehle status from all stones in the muehle of the deletet stone
     for (i=0; i<16; i++) {
@@ -402,10 +401,6 @@ function phasewatcher() {
 //
 // inputs   'color' of the stone
 //          'boardarray' gets position of all stones
-//
-// returns  'white' for white muehle 
-//          'black' for black muehle
-//          'nomuehle' for no detectet muehle
 function detectmuehle(boardarray, color) {
 
     // vertical muehle

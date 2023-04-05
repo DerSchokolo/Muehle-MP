@@ -4,11 +4,6 @@
 
 - 9 Steine je Farbe Weiß, Schwarz
 
-Multiplayer:
-- NoteJS
-- Express Server
-- Socket.io WebSocket
-
 Mögliche mühlen:
 Senkrecht:
 0-1-2
@@ -29,17 +24,3 @@ Wagerecht:
 8-12-17
 5-13-20
 2-14-23
-
-
-Quellen:
-https://www.youtube.com/watch?v=SE1HXc2V3Xk
-
-## Objects
-board
-    field       //field in the board
-    stone       //link to the stone which is on the board       
-
-stone
-    color       //color of the stone
-    position    //position of the stone
-    muehle      //stone is in muehle
