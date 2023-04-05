@@ -1,4 +1,7 @@
 # Muehle Multiplayer
+---
+> Teilweise funktioniert local Storage in Firefox nicht, wenn die Dateien nur lokal geöffnet wurden und nicht gehostet sind
+
 
 ## School Project
 
