@@ -78,8 +78,7 @@
                     document.getElementById('notification').innerHTML = playertwo + ' am Zug!';
                     // moves the stone in the boardarry array if already on the board
                     if (gamephase == 'zugphase' || gamephase == 'blackjump' || gamephase == 'whitejump') {
-                        boardarray[newDiv.id].stone = boardarray[Number(oldfieldwhite)].stone;
-                        boardarray[Number(oldfieldwhite)].stone = 'empty';
+                        boardarray[oldfieldblack.id].movestone(this.id);
                     };
 
                     // removes any muehle from the stone to then instantly reapply when in a new muehle
@@ -104,8 +103,7 @@
                     document.getElementById('notification').innerHTML = playerone + ' am Zug!';
                     // moves the stone in the boardarry array if already on the board
                     if (gamephase == 'zugphase' || gamephase == 'blackjump' || gamephase == 'whitejump') {
-                        boardarray[newDiv.id].stone = boardarray[Number(oldfieldblack)].stone;
-                        boardarray[Number(oldfieldblack)].stone = 'empty';
+                        boardarray[oldfieldblack].movestone(this.id);
                     };
 
                     // removes any muehle from the stone to then instantly reapply when in a new muehle
