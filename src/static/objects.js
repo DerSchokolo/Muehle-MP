@@ -2,6 +2,11 @@
 function board(field, stone) {
     this.field = field;
     this.stone = stone;
+
+    this.movestone = function(newfieldid) {
+        boardarray[newfieldid].stone = this.stone;
+        this.stone = "empty";
+    };
 };
 
 // constructur for stones object
